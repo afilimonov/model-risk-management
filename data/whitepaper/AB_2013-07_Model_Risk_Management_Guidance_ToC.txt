@@ -1,0 +1,31 @@
+Table of Contents
+ 
+Purpose
+ 
+Background and Key Points
+ 
+Definition of Model and Model Risk
+Model Universe
+Model Risk
+ 
+Model Risk Management Framework
+Policies & Procedures
+Roles & Responsibilities
+ 
+Model Control Framework
+Model Inventory Management
+Change & Version Control Management
+Model Performance Tracking
+Model Assumptions and Adjustments
+Data Management
+
+Model Validation Program
+Independent Model Validation
+Elements of an Independent Model Validation
+Assessments and Periodic Model Reviews
+Monitoring
+Findings and Model Risk Issues Management
+ 
+Model Lifecycle - Development, Implementation and Documentation
+Documentation
+Conclusion
