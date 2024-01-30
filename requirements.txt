@@ -6,3 +6,4 @@ requests
 matplotlib
 seaborn
 python-dotenv
+llama-index
