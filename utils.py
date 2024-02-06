@@ -15,3 +15,7 @@ def read_files_dir(directory):
         with open(os.path.join(directory, filename), "r") as f:
             result += f.read()
     return result
+
+def save_file(file, content):
+    with open(file, 'w') as f:
+        f.write(content)
