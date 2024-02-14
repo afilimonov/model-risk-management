@@ -1,2 +1,3 @@
-# Whitepaper Analysis
-Experiments using LLMs for whitepater analysis from the AI ML risk management perspective
+# Generative AI for Model Risk Managmenet
+
+Experiments using LLMs to automate Model Risk Management tasks.
