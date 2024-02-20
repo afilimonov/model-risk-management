@@ -54,7 +54,8 @@ class Demo():
         with whitepaper:
             pdf_viewer(self.moodel_pdf, height=800)
         with report:
-            st.markdown(f"> Objective: {Demo.objectives[self.objective]}")
+            with st.container(border=True):
+                st.markdown(f"*Objective*: {Demo.objectives[self.objective]}")
             with st.container(border=True):
                 if self.render:
                     with st.spinner('Analyzing...'):
