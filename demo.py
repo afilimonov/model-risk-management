@@ -10,7 +10,6 @@ from utils import getLogger, read_file
 from streamlit_pdf_viewer import pdf_viewer
 
 logger = getLogger(__name__)
-load_dotenv()
 
 class Demo():
 
