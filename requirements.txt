@@ -1,9 +1,7 @@
-pandas
-numpy
 openai
 backoff
 requests
-matplotlib
-seaborn
 python-dotenv
 llama-index
+streamlit
+streamlit-pdf-viewer
