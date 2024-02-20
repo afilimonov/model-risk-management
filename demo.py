@@ -55,9 +55,11 @@ class Demo():
             pdf_viewer(self.moodel_pdf, height=800)
         with report:
             st.markdown(f"> Objective: {Demo.objectives[self.objective]}")
-            if self.render:
-                with st.spinner('Analyzing...'):
-                    st.markdown(self.reviewer.analyze(self.moodel, Demo.objectives[self.objective]))
+            with st.container(border=True):
+                if self.render:
+                    with st.spinner('Analyzing...'):
+                        #st.markdown(self.reviewer.analyze(self.moodel, Demo.objectives[self.objective]))
+                        st.write_stream(self.reviewer.analyze_stream(self.moodel, Demo.objectives[self.objective]))
 
 
 

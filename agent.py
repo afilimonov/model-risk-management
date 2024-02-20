@@ -18,6 +18,14 @@ class MRMReviewer(ABC):
 
 
 class OpenAIReviewer(MRMReviewer):
+    analysis_instructions = f"""As a model risk validator, please conduct a detailed model analysis.
+    You are provided with model whitepaper and analysis objective. 
+    Your response should use Markdown forman and include:
+    Bullet points highlighting specific analysis topic with references or direct quotations from the whitepaper, 
+    citing specific sections, tables, or figures that support the analysis
+    A clear, evidence-based recommendation on whether the model should be adopted for usage,
+    considering the identified limitations."""
+
     def __init__(self, model='gpt-4', temperature=0, max_tokens=4096, top_p=0.5, frequency_penalty=0, presence_penalty=0):
         super().__init__()
         # Initialize any additional attributes for OpenAIReviewer
@@ -30,15 +38,9 @@ class OpenAIReviewer(MRMReviewer):
             presence_penalty=presence_penalty)  
 
     def analyze(self, model, objective) -> str:
-        instructions = f"""As a model risk validator, please conduct a detailed model analysis.
-        You are provided with model whitepaper and analysis objective. 
-        Your response should use Markdown forman and include:
-        Bullet points highlighting specific analysis topic with references or direct quotations from the whitepaper, citing specific sections, tables, or figures that support the analysis
-        A clear, evidence-based recommendation on whether the model should be adopted for usage,
-        considering the identified limitations."""
-
+        
         messages = [
-            ChatMessage(role="system", content=instructions), 
+            ChatMessage(role="system", content=self.analysis_instructions), 
             ChatMessage(role="assistant", content="provide model whitepaper"),
             ChatMessage(role="user", content=model),
             ChatMessage(role="assistant", content="what is analysis objective"),
@@ -47,6 +49,19 @@ class OpenAIReviewer(MRMReviewer):
         response = self.llm.chat(messages)
         return response.message.content
 
+    def analyze_stream(self, model, objective) -> str:
+        
+        messages = [
+            ChatMessage(role="system", content=self.analysis_instructions), 
+            ChatMessage(role="assistant", content="provide model whitepaper"),
+            ChatMessage(role="user", content=model),
+            ChatMessage(role="assistant", content="what is analysis objective"),
+            ChatMessage(role="user", content=objective)
+        ]
+        response = self.llm.stream_chat(messages)
+        for r in response:
+            yield r.delta
+    
     def review(self, model, objective, analysis) -> str:
         innstructions = f"""Act as a reviewer to prvide effective challenge of model analysis document.
         Focus on reviewing and challenging model analyssis document and not the model itself.
