@@ -29,16 +29,12 @@ class Demo():
         self.render = False
         self.objective = 0
 
-    def clear(self):
-        #self.conversation = Conversation([])
-        #self.clear_input()
-        #self.user_input = False
-        pass
+    def analyze(self):
+        self.render = True
 
     def set_objective(self):
         self.objective = Demo.objectives.index(st.session_state.objective)
-        #self.clear_chat()
-        # self.user_input = False
+        self.render = False
 
     def run(self):
 
@@ -48,7 +44,7 @@ class Demo():
         )
 
         st.header("Model Whitepaper Analysis")
-        clear_button = st.sidebar.button(label='Clear Chat', on_click=self.clear)
+        # clear_button = st.sidebar.button(label='Clear Chat', on_click=self.clear)
 
         st.session_state.objectives=st.selectbox(
             '''Analysis Objective''',
@@ -56,6 +52,7 @@ class Demo():
             self.objective,
             key='objective',
             on_change=self.set_objective)
+        analyze_button = st.button(label='Analize', on_click=self.analyze)
         
         report, whitepaper = st.tabs(["Feeling Lucky!", "Whitepaper"])
         with whitepaper:
