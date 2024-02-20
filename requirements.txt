@@ -5,3 +5,4 @@ python-dotenv
 llama-index
 streamlit
 streamlit-pdf-viewer
+boto3
