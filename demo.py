@@ -12,9 +12,6 @@ from streamlit_pdf_viewer import pdf_viewer
 logger = getLogger(__name__)
 load_dotenv()
 
-# if 'df' not in st.session_state:
-#    st.session_state['df'], st.session_state['model'], st.session_state['tokenizer'], st.session_state['frequentsearchesinorder'], st.session_state['workplans'] = initialize()
-
 class Demo():
 
     objectives = ['Identify any specific limitations or concerns regarding the use of the model in a stagflation environment',
@@ -60,7 +57,8 @@ class Demo():
         with report:
             st.markdown(f"> Objective: {Demo.objectives[self.objective]}")
             if self.render:
-                st.markdown(self.reviewer.analyze(self.moodel, Demo.objectives[self.objective]))
+                with st.spinner('Analyzing...'):
+                    st.markdown(self.reviewer.analyze(self.moodel, Demo.objectives[self.objective]))
 
 
 
