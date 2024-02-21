@@ -6,3 +6,4 @@ llama-index==0.9.39
 streamlit
 streamlit-pdf-viewer
 boto3
+llama-parse
