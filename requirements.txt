@@ -7,3 +7,4 @@ streamlit
 streamlit-pdf-viewer
 boto3
 llama-parse
+llama-index-llms-bedrock
