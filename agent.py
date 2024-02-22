@@ -2,7 +2,8 @@ import os
 import json
 import boto3
 from utils import getLogger
-from llama_index.llms import ChatMessage, OpenAI
+from llama_index.core.llms import ChatMessage
+from llama_index.llms.openai import OpenAI
 from abc import ABC, abstractmethod
 
 logger = getLogger(__name__)
