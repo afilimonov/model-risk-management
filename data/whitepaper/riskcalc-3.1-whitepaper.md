@@ -80,8 +80,6 @@ The RiskCalc v3.1 model incorporates aspects of both the structural, market-base
 
 The result is RiskCalc v3.1: a powerful new model that provides you with a more accurate and comprehensive approach to risk assessment for private firms.
 
-MOODY’S KMV RISKCALC v3.1 MODEL
----
 ## Strategic Assets of the RiskCalc v3.1 Model
 
 - Data: The RiskCalc v3.1 model is based on the richest and cleanest middle-market default data set in the world: the Credit Research Database. This database, gathered from the portfolios of banks and corporate lenders, contains more than 225,000 clean, validated financial statements and almost 4,000 unique confirmed middle-market defaults in North America alone.
@@ -97,7 +95,7 @@ MOODY’S KMV RISKCALC v3.1 MODEL
 - Risk drivers: You may now conduct detailed analyses of the drivers of a firm’s probability of default and analyze factors that represent high potential for increasing risk.
 - Seamless integration into the Moody’s KMV credit analytic tools: including Credit Monitor®, Portfolio Manager, and Moody’s KMV Financial Analyst.
 
-2 These numbers represent twice the volume of data used in RiskCalc v1.0 to predict middle-market defaults in the United States and Canada. This proprietary database, developed and maintained by Moody’s KMV, contains more than 6,500,000 financial statements on more than 1,500,000 unique private firms with more than 97,000 default events worldwide. The CRD enjoys similar data richness outside of North America. In Japan, for example, it includes more than 600,00 (cleansed) financial statements and 5,500 (cleansed) defaults.
+> These numbers represent twice the volume of data used in RiskCalc v1.0 to predict middle-market defaults in the United States and Canada. This proprietary database, developed and maintained by Moody’s KMV, contains more than 6,500,000 financial statements on more than 1,500,000 unique private firms with more than 97,000 default events worldwide. The CRD enjoys similar data richness outside of North America. In Japan, for example, it includes more than 600,00 (cleansed) financial statements and 5,500 (cleansed) defaults.
 ---
 ## THE PRODUCT
 
