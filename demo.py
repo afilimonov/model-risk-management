@@ -46,7 +46,8 @@ class Demo():
 
         st.set_page_config(
             page_title="Gen AI for MRM Demoe",
-            page_icon=":robot:"
+            page_icon=":robot:",
+            layout="centered"
         )
 
         st.header("Model Whitepaper Analysis")
