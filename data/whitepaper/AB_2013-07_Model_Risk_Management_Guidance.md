@@ -18,8 +18,6 @@ This advisory bulletin draws on FHFA’s supervisory experience at the Regulated
 
 2 Board of Governors of the Federal Reserve System and Office of the Comptroller of the Currency. Supervisory Guidance on Model Risk Management. OCC 2011-12 (April 4, 2011).
 
-AB 2013-07 (November 20, 2013) Page 1 Public
----
 ## Background and Key Points
 
 The Regulated Entities use models in a variety of areas including but not limited to financial instrument valuation, compliance, capital reserves measurement, loss allowance, financial reporting, and market and credit risk measurement and control. Although models are often essential, reliance on inaccurate or inappropriate models may lead to poor or costly decisions.
@@ -29,10 +27,7 @@ Effective risk-based model risk management entails a comprehensive approach in i
 This framework incorporates recent trends in model risk management. Specifically, it adopts the practice of managing inherent model risk at the source – the assignment of model risk management responsibilities to model developers, owners and users. Also, the framework expands the risk management group’s role from one solely performing validation activities to one that is more proactive in risk identification and measurement. Additionally, the framework recommends that the board and senior management exercise oversight through working groups and committees. Working groups and management committees provide model stakeholders forums in which to discuss model issues and approve mitigating actions. The framework likewise expands the assurance function of internal audit in large, complex enterprises to include continuous monitoring of model controls and an enhanced ability to review the effectiveness of the validation function. For less complex entities, internal audit’s role could be more limited and focus on compliance with relevant policies and procedures.
 
 Critical to the success of managing model risk is full ownership by model developers, owners and users of the responsibilities of managing risk consistent with the view that model risk is a risk management responsibility rather than a compliance obligation. Model risk is best managed at its source through a structured and disciplined approach in model development, testing, implementation, validation, and use. This is executed through a formalized control framework with a highly specific set of control procedures and standards present through the model lifecycle. Model owners and developers manage risk through proper development and implementation of models in accordance with these guidelines. Similarly, the model user takes guidance from specific control procedures to ensure that the model is used appropriately and all manner of model use is
-
-AB 2013-07 (November 20, 2013) Page 2 Public
----
-## reported and inventoried.
+reported and inventoried.
 
 Examples of control guidelines include model documentation standards, model performance standards, model change and control procedures, and technical model development standards to guide model implementation.
 
@@ -56,8 +51,6 @@ to promote effective organizational challenge of models. Key elements of having 
 
 based on the extent and complexity of model use and their level of risk exposure. Large, complex enterprises that develop their own models should have a more rigorous and extensive framework in place. Less complex and smaller entities should design their framework to ensure minimum supervisory requirements are met in a cost-effective manner.
 
-## AB 2013-07 (November 20, 2013) - Page 3 - Public
----
 ## Federal Housing Finance Agency Model Risk Management Guidance
 
 |Purpose|1|
@@ -85,8 +78,6 @@ based on the extent and complexity of model use and their level of risk exposure
 |Documentation|23|
 |Conclusion|24|
 
-AB 2013-07 (November 20, 2013) - Page 4 - Public
----
 ## Definition of Model and Model Risk
 
 Model Universe
@@ -99,15 +90,7 @@ A model-based application is software that integrates various component models a
 
 The Regulated Entities should consider significant or important EUCs as models for purposes of this advisory bulletin. Examples of these EUCs include applications that directly tie to model performance, financial reporting, corporate loss forecasts, securitizations, home price appreciation, interest rate projections, and economic capital.
 
-Models can also be defined by their state of existence, such as active, active-superseded, and limited-use excepted models. An active model refers to the current version of a model in use. Active-superseded models are previous versions of component models that remain temporarily in use in other modeling applications due to operational constraints until a newer version can be put into production. This usually occurs in large, complex enterprises, and additional controls and
-
-OCC 2011-12.
-
-AB 2013-07 (November 20, 2013) Page 5 Public
----
-HO FHFA
-
-closer monitoring of the model output should be used for this temporary solution. Limited-use excepted models are put into production for a specifically approved application pending completion of a full independent model validation, and should have a detailed analysis and proper approval prior to implementation.
+Models can also be defined by their state of existence, such as active, active-superseded, and limited-use excepted models. An active model refers to the current version of a model in use. Active-superseded models are previous versions of component models that remain temporarily in use in other modeling applications due to operational constraints until a newer version can be put into production. This usually occurs in large, complex enterprises, and additional controls and closer monitoring of the model output should be used for this temporary solution. Limited-use excepted models are put into production for a specifically approved application pending completion of a full independent model validation, and should have a detailed analysis and proper approval prior to implementation.
 
 The board or its delegated representative retains the final decision-making authority in determining the model universe as outlined above. Corporate policies should provide clear guidance on the scope of the model universe with specific examples as necessary.
 
@@ -123,8 +106,6 @@ Model Risk Management Framework
 
 A comprehensive framework for managing model risk across a Regulated Entity relies on good governance and oversight by the board and senior management; a formalized control framework to
 
-AB 2013-07 (November 20, 2013) Page 6 Public
----
 ## ensure disciplined model development, implementation, and use; and effective model risk identification and measurement for short-term mitigation and longer-term remediation.
 
 This framework is implemented through corporate policies and procedures and by assigning clear roles and responsibilities for managing model risk. It is vital for a Regulated Entity to understand how well models are being applied strategically and how they are performing in practice. Such a framework is designed to ensure that every model is developed and used to maximize the operational impact to make better business decisions.
@@ -137,13 +118,7 @@ The following sections in this advisory bulletin elaborate on regulatory expecta
 
 ## Policies & Procedures
 
-Each Regulated Entity should have a board-level model policy (self-standing or part of a broader document) that describes its model risk framework and sets its model risk appetite commensurate with the organization’s complexity, business activities, and overall organizational structure. The model policy should define what qualifies as a model, model-based application, modeling process
-
-AB 2013-07 (November 20, 2013) Page 7 Public
----
-## HO FHFA
-
-or significant EUC. The policy should define how to classify a model based on purpose, use and related importance to a Regulated Entity’s financial statements, financial disclosures, risk management, or decision making. Furthermore, the model policy should identify individual roles within the model risk governance framework and assign responsibilities to the business units and risk oversight for the development and maintenance of each model. The designation of responsibilities should clearly indicate the parties responsible for reviewing and approving models as well as significant changes to models. In addition, parties should be identified as responsible for evaluating the model’s output (e.g., risk metrics), inputs (e.g., data inputs and assumptions), and any manipulation of the output that goes into final reports.
+Each Regulated Entity should have a board-level model policy (self-standing or part of a broader document) that describes its model risk framework and sets its model risk appetite commensurate with the organization’s complexity, business activities, and overall organizational structure. The model policy should define what qualifies as a model, model-based application, modeling process or significant EUC. The policy should define how to classify a model based on purpose, use and related importance to a Regulated Entity’s financial statements, financial disclosures, risk management, or decision making. Furthermore, the model policy should identify individual roles within the model risk governance framework and assign responsibilities to the business units and risk oversight for the development and maintenance of each model. The designation of responsibilities should clearly indicate the parties responsible for reviewing and approving models as well as significant changes to models. In addition, parties should be identified as responsible for evaluating the model’s output (e.g., risk metrics), inputs (e.g., data inputs and assumptions), and any manipulation of the output that goes into final reports.
 
 Senior management should supplement board-level policies with more granular policies and procedures depending on the degree and complexity of model use. The board and/or its delegates should review and approve model risk management policies on an annual basis. Policies should cover all aspects of model risk management including the definition and classification of models; assessment of model risk; acceptable practices for model development, testing, implementation, use, and effective challenge; appropriate model validation activities; and oversight and controls over the model risk management process.
 
@@ -153,11 +128,7 @@ Entities should have sufficient policies, procedures and documentation encompass
 
 Policies should establish a model validation program (as described below) to promote validation and monitoring activities. If a Regulated Entity uses external resources for validation and compliance functions, it should have policies that outline controls around external resources and detail how it will integrate the contracted work into its model risk management oversight.
 
-Management should fully document, test, validate, and approve a model before it enters production. Policies should provide guidance on mitigating limited but allowable exceptions to full validation prior to implementation, required pre-production approvals, and any additional control procedures. The policies should also detail the validation requirements for vendor models and third-party products. In cases where a vendor model is used, prior to relying on a vendor’s model
-
-AB 2013-07 (November 20, 2013) Page 8 Public
----
-## results
+Management should fully document, test, validate, and approve a model before it enters production. Policies should provide guidance on mitigating limited but allowable exceptions to full validation prior to implementation, required pre-production approvals, and any additional control procedures. The policies should also detail the validation requirements for vendor models and third-party products. In cases where a vendor model is used, prior to relying on a vendor’s model results
 
 the vendor should provide its independent model validation results if available, and the Regulated Entity should test its own internal processes surrounding the use of the model. Policies should also ensure regular confirmation that vendors are updating their models at an appropriate frequency to reflect relevant changes in market conditions and material developments in the financial engineering field.
 
@@ -175,8 +146,6 @@ The following describes roles and responsibilities for key model stakeholders in
 
 The board and its designated committee(s) provide the tone from the top related to oversight and governance of risk at a Regulated Entity. Board policies set risk appetite, reporting requirements, and clear delegations of authority. The board should regularly receive reports on the aggregate level, direction, and management of salient and emerging model risk issues.
 
-AB 2013-07 (November 20, 2013) Page 9 Public
----
 ## Chief Risk Officer
 
 The CRO generally owns and approves all model risk policies, standards, and procedures, and chairs the primary model risk oversight committee tasked with overseeing enterprise-wide model risk issues. The CRO should provide regular reports on model risk issues and performance metrics to the board. The CRO is responsible for providing the board an aggregate view of the level and direction of model risk. For less complex entities, the CRO could delegate some of their model risk management responsibilities to other qualified personnel from within the institution.
@@ -195,12 +164,6 @@ On an ongoing basis, the model user should raise model performance issues and in
 
 The model owner could be either the developer or primary model user at some of the Regulated Entities.
 
-AB 2013-07 (November 20, 2013) - Page 10 - Public
----
-HO FHFA
-
-remains current and outstanding validation and audit findings are addressed in a timely manner. Model users should vet on-top model adjustments with business unit management and oversight committees.
-
 ## Model Risk Management Group
 
 The model risk management group functions as the second layer of control in managing model risk through its independent validation of models, periodic reviews, assessments, and continuous monitoring of model risk. Depending on a Regulated Entity’s organizational structure, staff from several groups, such as model validation, operations risk, enterprise risk management, and business unit risk officers, may handle the responsibilities of model risk management. Traditionally, the central role of the risk management group has been the independent validation of models. The group’s role should also include risk identification and measurement and the provision of an independent review and approval of model performance metrics. Annually, the model risk management group should review and assess the risk classifications and outstanding findings of all models in the institution’s inventory. The model risk management group may initiate additional targeted validation work or may enhance or modify risk mitigants in place based on the results of this assessment.
@@ -211,8 +174,6 @@ An effective model risk management group should be staffed with the appropriate 
 
 Some examples of actions include on-top adjustments, more frequent performance monitoring or reporting, limited model use, or lower risk limits.
 
-AB 2013-07 (November 20, 2013) Page 11 Public
----
 ## Internal Audit
 
 Internal audit functions as another control layer in the model risk management framework. In large, complex entities, internal audit evaluates the overall effectiveness of the model risk management framework. In less complex entities, internal audit would primarily focus on evaluating compliance by model owners and users with policies and procedures that specify control activities for model development, implementation, and use. In large complex entities, internal audit should also have the ability to validate model performance and risk management effectiveness.
@@ -225,11 +186,7 @@ A Regulated Entity may utilize external audit resources to provide additional ca
 
 Management committees and working groups provide the model stakeholders a forum to discuss model risk issues and remediation actions. A management-level model risk committee provides a forum for the reporting and aggregation of all model risk issues. This in turn facilitates analysis by and direction from senior management. Committee agenda items include corporate model strategy and model development, planning, and prioritization. This committee is also the final escalation point for outstanding model risk issues before formal elevation to the board.
 
-Specialized committees such as valuation, asset-liability management, financial reporting, market risk, credit risk, and loss allowance and reserve committees discuss and approve short-term mitigants and longer-term remediation plans for model use risk. For example, a model user’s proposed on-top adjustments to address model performance issues in the interim are reviewed and
-
-AB 2013-07 (November 20, 2013) Page 12 Public
----
-approved by senior management pending a longer-term solution that may entail re-specifying a model. In the model risk management framework discussed above, committees and business unit working groups provide the crucial information linkages that allow for vertical and horizontal reporting of model risk issues across a Regulated Entity on an ongoing basis. Each committee’s charter should outline its responsibilities with respect to the models under its authority.
+Specialized committees such as valuation, asset-liability management, financial reporting, market risk, credit risk, and loss allowance and reserve committees discuss and approve short-term mitigants and longer-term remediation plans for model use risk. For example, a model user’s proposed on-top adjustments to address model performance issues in the interim are reviewed and approved by senior management pending a longer-term solution that may entail re-specifying a model. In the model risk management framework discussed above, committees and business unit working groups provide the crucial information linkages that allow for vertical and horizontal reporting of model risk issues across a Regulated Entity on an ongoing basis. Each committee’s charter should outline its responsibilities with respect to the models under its authority.
 
 Working groups may be formed on a permanent or ad-hoc basis. Regardless of specific form, senior management should create minimum standards and expectations on working group processes, reports and results. Although a degree of variability is expected in terms of the scope and agenda items of various working groups, a minimum level of standardization should be established to promote effective working groups.
 
@@ -241,8 +198,6 @@ Model Control Framework
 
 Model owners, developers, and users should provide the primary control for model risk. To facilitate this, a Regulated Entity needs a formalized model development and implementation control framework. Model documentation standards, security, change, and version controls, performance tracking, data integrity, and technical model development standards are all essential to achieving a structured, disciplined approach to model development, implementation, and use. Senior management, the model risk management group and committees generally provide a second layer of controls. Model inventory management, periodic assessments, model validations, risk measurement, limits and on-going model risk monitoring are all necessary to actively manage model risk in the organization. These controls aid in the model risk identification and measurement process and allow a Regulated Entity to address individual and aggregate model risk.
 
-AB 2013-07 (November 20, 2013) Page 13 Public
----
 ## Model risk controls
 
 Model risk controls should be embedded in policies, procedures, and the roles and responsibilities of all stakeholders. Described below are some key controls in greater detail.
@@ -259,8 +214,6 @@ For large, complex enterprises, the model inventory should include major assumpt
 
 Each Regulated Entity should have robust model change controls in place with policies and procedures that clearly define the roles and responsibilities of all interested parties. Only approved parties should alter a model’s code. Each model should have a change control log that states when the model was changed, the nature of the change, who was responsible for the change, and who approved the change, as applicable. The change control log is a document that allows others to clearly understand a model’s function its and settings, and aid in its auditing. A Regulated Entity should validate and approve all significant model changes according to its policies and procedures prior to deployment into production. The model’s governance authority should define and establish applicable threshold levels which determine what constitutes a significant model change.
 
-AB 2013-07 (November 20, 2013) - Page 14 - Public
----
 ## Model Performance Tracking
 
 Each Regulated Entity should, at least on a quarterly basis, monitor the performance of its mission-critical or high-risk models. Performance monitoring should use thresholds approved at least on an annual basis by the model risk management group. The model risk management group should report results of model performance tracking to the relevant model oversight committee(s) and the board on a regular basis.
@@ -283,13 +236,7 @@ Stress testing provides a better understanding of how a model reacts to non-typi
 
 Each Regulated Entity should maintain a consolidated list of the major assumptions and adjustments applied to highly risk ranked or classified models. Adjustments include on-top adjustments and model re-calibrations. A Regulated Entity should update this list on a quarterly basis, and the list should be a part of senior management’s (and possibly the board’s) evaluation of model risk.
 
-A Regulated Entity should have a formalized process for all models to document, validate, and update assumptions, historical inputs, or business scenarios used as model inputs. The process should enable approval, monitoring, and periodic update of model inputs. A Regulated Entity should evaluate assumptions for their appropriateness and reasonableness in light of current business and market conditions as well as other material factors. Assumptions should be supportable and result in accurate estimates of risk. The evaluation of the reasonableness and appropriateness of assumptions should consider prevailing industry practices with regard to the selection of assumptions for similar purposes. The documentation should describe the assumption
-
-AB 2013-07 (November 20, 2013) - Page 15 - Public
----
-HO
-
-FHFA
+A Regulated Entity should have a formalized process for all models to document, validate, and update assumptions, historical inputs, or business scenarios used as model inputs. The process should enable approval, monitoring, and periodic update of model inputs. A Regulated Entity should evaluate assumptions for their appropriateness and reasonableness in light of current business and market conditions as well as other material factors. Assumptions should be supportable and result in accurate estimates of risk. The evaluation of the reasonableness and appropriateness of assumptions should consider prevailing industry practices with regard to the selection of assumptions for similar purposes. The documentation should describe the assumption.
 
 Historical input, source used to derive the assumption, owner’s responsible for deriving and updating the assumption, frequency of update, and justification (in the case of a subjective assumption). Model owners should provide a clear rationale for their assumptions and should identify, explain, and justify departures from industry practice. Senior management should review assumptions on a regular basis. Vendors who provide modeling services to a Regulated Entity and manage those services off-site (e.g., vendors who model the credit worthiness of advance collateral) should provide enough documentation or descriptions of their modeling assumptions and data sources for the Regulated Entity to compare these to industry standards.
 
@@ -305,8 +252,6 @@ A Regulated Entity should establish a validation program to identify and measure
 
 Validation is the process of determining that a model’s results accurately meet the requirements of its intended use and that the model is reasonable for use. Model validation typically includes an independent review of the model’s logical and conceptual soundness, confirmation of its proper operation, a comparison against competing models, and a comparison of model predictions against subsequent real-world events. Validation should also help model users understand potential weaknesses and limitations of a model.
 
-AB 2013-07 (November 20, 2013) Page 16 Public
----
 ## Independent Model Validation
 
 All models are subject to independent model validation according to the schedule set forth in the model inventory based on model classification or annual validation planning. The frequency and scope of validation should be commensurate with the relative importance of a model to a Regulated Entity’s decision-making or risk management processes. The financial costs and consequences associated with the model producing highly inaccurate or unexplainable results should factor into the robustness of the validation. Overall, a model’s usage in the business process, its business impact, and its criticality (e.g., high, medium, or low) should drive the vigor of its validation process.
@@ -315,52 +260,36 @@ A Regulated Entity should independently validate newly developed models and mode
 
 A Regulated Entity may perform a limited-scope model validation in cases where changes to a model may be isolated. In such cases, they should document the evidence warranting a limited validation. The Regulated Entity should determine what types of changes may trigger a limited scope validation. Some instances that may warrant a limited validation include changes in data flow into and out of a model, changes in model parameters and assumptions, significant changes in the market environment, and modeling of new instruments or products. Furthermore, if a model and its components have not changed, a Regulated Entity may perform a limited validation to meet its scheduled full validation requirement provided that the model still undergoes an annual review or assessment.
 
-Only qualified personnel who demonstrate the necessary knowledge, skills, and experience should carry out model validation. These personnel may be internal staff, external consultants, or a combination of the two. The standards of knowledge, skills, and experience necessary to conduct such reviews tie directly to the model being validated. More complex models may warrant the engagement of third-party experts to supplement internal validations. If a Regulated Entity
+Only qualified personnel who demonstrate the necessary knowledge, skills, and experience should carry out model validation. These personnel may be internal staff, external consultants, or a combination of the two. The standards of knowledge, skills, and experience necessary to conduct such reviews tie directly to the model being validated. More complex models may warrant the engagement of third-party experts to supplement internal validations. If a Regulated Entity employs external consultants in the validation process, management should consider changing consultants or their personnel periodically, such as every three to four years, to ensure client-consultant impartiality. A model validation can be split between more than one validator (e.g., internal staff and external resources) when model validation tasks can be efficiently divided and qualified parties have the expertise and industry experience to perform the validation. When relying on a portion of a model or its results not addressed through joint validation, a Regulated Entity would be responsible for validating any uncovered portions or results.| |
+|Model validation reports should include an assessment of the materiality of the findings or recommendations in the reports. Although an overall model validation rating (e.g., satisfactory) can be included in the validation report, it may not indicate whether the model owner can effectively mitigate the identified model’s risks and their potential impacts to an acceptable level consistent with the Regulated Entity’s model risk tolerance level. Therefore, a Regulated Entity should use caution and not rely solely on model validation report ratings to assess the model risk facing the organization.| |
+|For externally managed models, a Regulated Entity should request vendors to provide technical documentation and any available results from their own internal testing. A Regulated Entity should have documentation from a vendor that outlines how a model works as part of its purchasing process. If any information regarding a model comes from discussions with the vendor, then the Regulated Entity should document those discussions. The Regulated Entity should also request regular confirmation from vendors, including third-party pricing services, that they are updating their models at an appropriate frequency to reflect relevant changes in market conditions and/or material developments in the financial engineering field. Vendor documentation should describe its quality assurance and benchmarking practices. Vendor provided information can complete the validation of an externally managed model when paired with a Regulated Entity’s internal validation and periodic benchmarking of a model’s results against those of other models or calculation methods.| |
+|A Regulated Entity should ensure that all mission-critical or significant model validation reports, or a detailed summary of these reports, are provided to senior management and the board (or to the appropriate governance committee of the board) for review. Model validation reports or summaries for less critical models should be reported to senior management and the appropriate management-level governance committee. A Regulated Entity should also make all model validation reports available to examiners and other FHFA personnel.
 
-AB 2013-07 (November 20, 2013) - Page 17 - Public
----
 ## Elements of an Independent Model Validation
 
 The validators should include, at minimum, the following elements in the independent model validations:
 
-|HO|FHFA|
-|---|---|
-|employs external consultants in the validation process, management should consider changing consultants or their personnel periodically, such as every three to four years, to ensure client-consultant impartiality. A model validation can be split between more than one validator (e.g., internal staff and external resources) when model validation tasks can be efficiently divided and qualified parties have the expertise and industry experience to perform the validation. When relying on a portion of a model or its results not addressed through joint validation, a Regulated Entity would be responsible for validating any uncovered portions or results.| |
-|Model validation reports should include an assessment of the materiality of the findings or recommendations in the reports. Although an overall model validation rating (e.g., satisfactory) can be included in the validation report, it may not indicate whether the model owner can effectively mitigate the identified model’s risks and their potential impacts to an acceptable level consistent with the Regulated Entity’s model risk tolerance level. Therefore, a Regulated Entity should use caution and not rely solely on model validation report ratings to assess the model risk facing the organization.| |
-|For externally managed models, a Regulated Entity should request vendors to provide technical documentation and any available results from their own internal testing. A Regulated Entity should have documentation from a vendor that outlines how a model works as part of its purchasing process. If any information regarding a model comes from discussions with the vendor, then the Regulated Entity should document those discussions. The Regulated Entity should also request regular confirmation from vendors, including third-party pricing services, that they are updating their models at an appropriate frequency to reflect relevant changes in market conditions and/or material developments in the financial engineering field. Vendor documentation should describe its quality assurance and benchmarking practices. Vendor provided information can complete the validation of an externally managed model when paired with a Regulated Entity’s internal validation and periodic benchmarking of a model’s results against those of other models or calculation methods.| |
-|A Regulated Entity should ensure that all mission-critical or significant model validation reports, or a detailed summary of these reports, are provided to senior management and the board (or to the appropriate governance committee of the board) for review. Model validation reports or summaries for less critical models should be reported to senior management and the appropriate management-level governance committee. A Regulated Entity should also make all model validation reports available to examiners and other FHFA personnel.| |
-
-AB 2013-07 (November 20, 2013) Page 18 Public
----
-## Data and Assumptions
+### Data and Assumptions
 
 A model validation should include a review of the data and assumptions used as inputs for a model. It also should include a review of the adequacy of the controls in place to ensure the accuracy, integrity, and appropriateness of model inputs. Large, complex enterprises may need to place reliance on data management and control functions for the assessment of data input in certain cases.
 
-## Model Theory
+### Model Theory
 
 A model validation should include an assessment of the statistical, financial, and economic theories underpinning the model. The conceptual review should be evaluated from an empirical, analytical, and best-practice perspective. Those responsible for validation should have access to model documentation that contains a clear description of the underlying theory and logic of the model. The validation should include an assessment of whether the theory and logic underlying the model are generally accepted and supportable. The validation should explain the appropriateness of the model for its intended business use. In instances of model failure during the validation process, an explanation should be provided detailing why a model should not be used. For internally-developed models, validation should cover the model development process, including developmental evidence and the pre-implementation phase. With respect to vendor models, the validation should include a review of any vendor information that describes the theory and logic supporting the model and an assessment of whether these are generally accepted and supportable.
 
-## Model Code and Mathematics
+### Model Code and Mathematics
 
 A model validation should, where possible, examine the model’s computer code and mathematical formulae, including calculations performed during data preparation in spreadsheets or other applications external to the primary model, for potential flaws in logic or coding. In the case of proprietary models where vendors will not allow access to computer code and mathematical formulae, a model validation should produce comparable results from alternative models or from mathematical equations that are appropriate for the task.
 
-## Model Output Reports
+### Model Output Reports
 
-A model validation should include a review of the model’s output reports. It should analyze and compare output reports over time to assess their reasonableness and accuracy. Where possible, it should compare output results against those of comparable models or other benchmarks. The model risk management group should establish appropriate tolerance thresholds for differences between the model of record and the benchmark model used for validation purposes. Appropriate performance thresholds may help determine whether valuation differences between the two comparable models identified through an internal independent model validation are reasonable.
+A model validation should include a review of the model’s output reports. It should analyze and compare output reports over time to assess their reasonableness and accuracy. Where possible, it should compare output results against those of comparable models or other benchmarks. The model risk management group should establish appropriate tolerance thresholds for differences between the model of record and the benchmark model used for validation purposes. Appropriate performance thresholds may help determine whether valuation differences between the two comparable models identified through an internal independent model validation are reasonable, and whether differences require further investigation. Where possible, the validation should periodically compare model results to actual results, via back-testing or out-of-sample testing. A model validation should include a review of the adequacy of the audit trail documenting and supporting output reports. This audit trail should provide information on the inputs (data and assumptions) used to generate output reports.
 
-AB 2013-07 (November 20, 2013)
-Page 19
-Public
----
-HO FHFA
-
-whether differences require further investigation. Where possible, the validation should periodically compare model results to actual results, via back-testing or out-of-sample testing. A model validation should include a review of the adequacy of the audit trail documenting and supporting output reports. This audit trail should provide information on the inputs (data and assumptions) used to generate output reports.
-
-Assessments and Periodic Model Reviews
+## Assessments and Periodic Model Reviews
 
 At least on an annual basis, the model risk management group should conduct a model review, with input from model owners, to determine if risk levels have increased or to identify new emerging risks since the last model validation. Each model owner should be subject to an assessment of the model and a regular attestation as to compliance with model policies and procedures. An annual review consists of an assessment of model performance and any model-related market or industry changes to gauge actual and potential impacts to model risk. This review should be a more streamlined process than a full model validation. The goal of this streamlined review process is to update the risk ratings of models and related findings based on current market conditions and regulations, changes in the application and use of model output, and model performance history and adjustments. The model risk management group should measure the materiality of un-remediated model validation findings and factor these into a model’s inherent risk and any aggregated risk information. A Regulated Entity should validate and test for mitigation and/or remediation any elevated risk issues or findings resulting from this assessment. The risk management group may initiate additional targeted validation work or may enhance or modify risk mitigants in place based on the results of this assessment.
 
-Monitoring
+## Monitoring
 
 Model risk information may originate from sources across a Regulated Entity including audit and regulatory findings, issue tracking reports, model performance tracking, testing activities, and assessments providing useful information to senior management and the board. A Regulated Entity should ensure effective information collection to identify model risk and assess the materiality of such via risk measurement, limits, and ongoing monitoring. Effective monitoring can identify which models need to be updated or replaced. The model risk management group and CRO should play a central role in gathering this information.
 
@@ -368,9 +297,7 @@ Management reports and alerts are essential for senior management and the board 
 
 Some examples of actions include on-top adjustments, more frequent performance monitoring or reporting, limited model use, or lower risk limits.
 
-AB 2013-07 (November 20, 2013) Page 20 Public
----
-## Findings and Model Risk Issues Management
+### Findings and Model Risk Issues Management
 
 Proper tracking and remediation of model validation findings and other identified model risk issues are essential in managing model risk. Model-related findings and identified risk can come from a variety of sources, including internal audit, external audit, FHFA examinations, model validations, and monitoring. Competent parties should be able to provide an objective analysis of model risk and have the authority to properly remediate issues or escalate them to senior management for timely resolution. Model risk issues can include technical limitations on models. Proposed solutions to these limitations may affect a model’s use and output. These solutions should be within an acceptable level of model risk to senior management or the board.
 
@@ -379,7 +306,7 @@ Model risk managers should provide regular tracking reports to senior management
 ## Model Lifecycle - Development, Implementation and Documentation
 
 A Regulated Entity should ensure that it properly manages its models to achieve optimal performance throughout their lifecycle, including the stage of development, testing, deployment, validation, maintenance, performance tracking, ongoing monitoring, and timely replacement. This assurance involves effective policies and procedures along with documented evidence of compliance.
----
+
 ## Model Development
 
 Model development should be a disciplined process aligned with the strategic goals and business objectives of a Regulated Entity and the business units it supports. A Regulated Entity should follow policies and procedures for model development of internally-developed as well as vendor models. Model development includes all activities relating to research, development, and production implementation of models. Policies and procedures should address establishing business needs (whether a model is built internally or via an external vendor, documentation), data assessment, IT infrastructure, testing, ownership, the review and approval process for putting new models into production, roles and responsibilities of various groups (including separation of development and testing functions), access rights, and an implementation plan. All new models should have a model development plan with a clear statement of purpose to ensure they meet their intended uses. The model development plan should include resources, a general timeline, testing and validation requirements with appropriate thresholds, and an implementation plan. In large, complex enterprises, the model development plan could incorporate or reference other procedures and standards for new model development, but should provide an overall representation of how a Regulated Entity plans to develop and implement the model.
@@ -420,24 +347,17 @@ At a minimum, a Regulated Entity should maintain the following documentation:
 
 1. Materials and evidence related to model development, including research, business and technical requirements, and implementation. A model development plan should capture some of pis information. For internally developed models, pe documentation standard for research
 
-AB 2013-07 (November 20, 2013) - Page 23 - Public
----
-## HO FHFA
+2. Documentation and development will be more detailed than for vendor models. Adequate documentation of model theory and the model development process builds institutional knowledge. Documented business and technical requirements ensure that a model is developed consistent with its intended use and implemented on the appropriate software platform.
 
-1. Documentation and development will be more detailed than for vendor models. Adequate documentation of model theory and the model development process builds institutional knowledge. Documented business and technical requirements ensure that a model is developed consistent with its intended use and implemented on the appropriate software platform.
+3. Documentation from the research and development of vendor models, though available information may differ among vendors. A Regulated Entity may not have access to proprietary information such as the modeling approach, model code, and numerical algorithms. A Regulated Entity should, however, have vendors provide developmental evidence explaining a model’s components and intended use, information regarding the data used to develop the model, and testing results that show the model works as expected. This documentation should allow a Regulated Entity to assess the assumptions and methodologies underlying a vendor’s model in the same manner as for internally developed models. A Regulated Entity should have contingency plans in place for instances where the vendor model is no longer available or cannot be supported by the vendor.
 
-2. Documentation from the research and development of vendor models, though available information may differ among vendors. A Regulated Entity may not have access to proprietary information such as the modeling approach, model code, and numerical algorithms. A Regulated Entity should, however, have vendors provide developmental evidence explaining a model’s components and intended use, information regarding the data used to develop the model, and testing results that show the model works as expected. This documentation should allow a Regulated Entity to assess the assumptions and methodologies underlying a vendor’s model in the same manner as for internally developed models. A Regulated Entity should have contingency plans in place for instances where the vendor model is no longer available or cannot be supported by the vendor.
+4. An operating manual or model user’s guide on how to operate a model or model application that also describes a model’s inputs, assumptions, underlying theory, mathematics, output reports, and risk metrics. The manual should include a brief summary that provides a clear description of the purpose of a model and its assumptions and limitations. The manual should also describe the procedures used to operate, maintain, and update a model. The guide should address staff training on a model’s use. The manual should be sufficiently detailed to enable a qualified third-party to independently operate and maintain a model.
 
-3. An operating manual or model user’s guide on how to operate a model or model application that also describes a model’s inputs, assumptions, underlying theory, mathematics, output reports, and risk metrics. The manual should include a brief summary that provides a clear description of the purpose of a model and its assumptions and limitations. The manual should also describe the procedures used to operate, maintain, and update a model. The guide should address staff training on a model’s use. The manual should be sufficiently detailed to enable a qualified third-party to independently operate and maintain a model.
-
-4. Materials and evidence that a model is being properly maintained, including model-specific procedures, performance tracking results and output analysis, and testing and changes in response to validation findings or other identified model discrepancies. A Regulated Entity should store copies of the model documentation in a safe place, preferably off-site, to facilitate disaster recovery.
+5. Materials and evidence that a model is being properly maintained, including model-specific procedures, performance tracking results and output analysis, and testing and changes in response to validation findings or other identified model discrepancies. A Regulated Entity should store copies of the model documentation in a safe place, preferably off-site, to facilitate disaster recovery.
 
 Conclusion: This advisory bulletin outlined minimum regulatory expectations regarding model risk management using a framework of controls and policies, and management guidelines on how a model’s lifecycle risk should be identified, managed, and reported across a Regulated Entity by stakeholders. This framework relies on model owners and users taking ownership of managing risk at its source. The framework expects periodic assessments and monitoring of risks along with intermediate mitigations and longer-term solutions. Clarifying the primary responsibilities of model developers and model users is meant to encourage a culture of risk management rather than a culture of compliance with management and regulatory requirements.
 
-AB 2013-07 (November 20, 2013) Page 24 Public
----
 ## Advisory Bulletin 2013-07 (November 20, 2013)
 
 Advisory Bulletins communicate guidance to FHFA supervision staff and the regulated entities on specific supervisory matters pertaining to the Federal Home Loan Banks, the Office of Finance, Fannie Mae, and Freddie Mac. This bulletin is effective immediately upon issuance. Contact Kari Walter, Senior Associate Director, Office of Supervision Policy at Kari.Walter@fhfa.gov or (202) 649-3405, Kyle Roberts, Associate Director, Office of Supervision Policy at Kyle.Roberts@fhfa.gov or (202) 649-3005, Michael Lee, Examination Manager, Division of Enterprise Regulation at Michael.Lee@fhfa.gov or (202) 649-3510, or Stefan Szilagyi, Examination Manager, Division of Bank Regulation at Stefan.Szilagyi@fhfa.gov or (202) 649-3515 with comments or questions pertaining to this bulletin. This Advisory Bulletin is a Public document.
 
-Page 25    Public

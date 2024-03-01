@@ -19,7 +19,7 @@ This white paper outlines the methodology, performance, and key economic benefit
 The RiskCalc v3.1 model powers the next-generation of default prediction technology for middle market, private firms. With RiskCalc v3.1, Moody’s KMV answers an important challenge faced by our customers: “How can we support our decision-making process for extending loans, managing portfolios and pricing debt securities when there is little available market insight into a firm’s prospects, as is the case for middle market credits?”
 
 For convenience, we use the term “model” in the singular. In fact, RiskCalc is a suite of localized models that share a common framework. Our proprietary database of middle-market financial statement information contains data from each modeling region, which allows us to make modifications with respect to the model inputs and parameters, and to calibrate regional default rates. Each model is adjusted to reflect local economies and reporting standards.
----
+
 © 2004 Moody’s KMV Company. All rights reserved. Credit Monitor®, EDFCalc®, Private Firm Model®, KMV®, CreditEdge, Portfolio Manager, Portfolio Preprocessor, GCorr, DealAnalyzer, CreditMark, the KMV logo, Moody’s RiskCalc, Moody’s Financial Analyst, Moody’s Risk Advisor, LossCalc, Expected Default Frequency, and EDF are trademarks of MIS Quality Management Corp.
 
 Published by: Moody’s KMV Company
@@ -56,9 +56,7 @@ To Learn More: Please contact your Moody’s KMV client representative, visit us
 |SUMMARY AND CONCLUSIONS|33|
 |APPENDIX|34|
 |REFERENCES|35|
----
-NO_CONTENT_HERE
----
+
 # EXECUTIVE SUMMARY
 
 The RiskCalc v3.1 model: The tool that gives you greater insight on risk
@@ -153,8 +151,6 @@ In the course of expanding the Credit Research Database, we pioneered numerous p
 At the same time, we also employ more than 200 specific data-quality metrics and filters, designed in conjunction with participating lenders, to ensure data quality that is essential to model integrity. To support the RiskCalc v3.1 suite
 
 The increase in default activity is seen in our private firm database. It can also be seen in bond defaults (Hamilton, 2003) and our proprietary public firm default database.
----
-of models specifically, we apply several additional advanced statistical techniques for managing data quality. As a result, the modeling datasets are very clean. For example, in developing the United States model, we removed more than 69 percent of the data submitted by contributors because it contained notable errors. Of particular importance are two techniques we implement to check for misclassified defaults and detect potentially fraudulent statements and/or statements that exhibit data entry errors. (For more information, please see Section 3.4, “Further Modeling Improvements.”)
 
 ## 2.3 Support for Regulatory Requirements
 
@@ -176,8 +172,6 @@ In addition to fundamental financial statement inputs, the RiskCalc v3.1 model i
 
 The RiskCalc v3.1 model includes monthly updates with the market’s aggregated outlook on the state of the general economy as well as a firm’s particular industry. With this design, we leverage indicators that encompass many unexpected events that might affect a borrower’s loan performance.
 
-Jason Kofman contributed to this section.
----
 ## Stress Testing Default Probabilities
 
 The RiskCalc v3.1 model is uniquely designed to stress test a firm’s sensitivity to the probability of default at different stages of a credit cycle. This feature satisfies a leading imperative of the New Basel Capital Accord:
@@ -233,7 +227,7 @@ The greatest contribution to profitability, efficiency, and reduced losses comes
 These observations became available in the late fall of 2003, after the model was finalized.
 
 ## MOODY’S KMV RISKCALC v3.1 MODEL
----
+
 ### THE MODEL
 
 We redesigned the framework to achieve the superior predictive power of the RiskCalc v3.1 model. The RiskCalc v3.1 models provide superior predictions of default risk by blending forward-looking systematic information on general and sector-specific credit cycles with a localized approach based on detailed company financial statements. As we describe below, our new model builds on the success of RiskCalc v.1.0 and its firm-specific financial statement model of credit risk by adding equity information, translated into default signals through Moody’s KMV structural model framework.
@@ -257,7 +251,7 @@ Most standard texts on financial statement analysis discuss ratios that characte
 Users who desire the most predictive measure of default risk—one that constantly updates and incorporates all relevant data as soon as they are available—will prefer to use the complete version of RiskCalc v3.1 model. For more information, please see Section 3.2, “RiskCalc v3.1, The Complete Version.”
 
 We address this issue by implementing non-parametric transformations of the input ratios and combining them in a multivariate context, thus reducing the impact of manipulative noise.
----
+
 To avoid an “overfitted” model, we developed and refined a process to select a limited number of financial ratios that yield a powerful model. During our selection process, we used statistical tests as well as prior modeling experience to determine which variables to include and exclude from the model.
 
 Our list of financial statement ratios fall under one of the following broad risk factors of financial performance:
@@ -284,8 +278,7 @@ The Appendix provides a listing of the specific ratios used in the RiskCalc v3.1
 Each step of this process is described in more detail in the Methodology document. Here we provide only a brief summary.
 
 MOODY’S KMV RISKCALC v3.1 MODEL
----
-## While each of these ratios relates to varying degrees to credit risk, our research shows a nonlinear relationship between many of these ratios and a firm’s probability of default. As demonstrated in Figure 2, below, the probability of default typically decreases as net income to assets (ROA) increases, but the sensitivity of the default likelihood to ROA diminishes as ROA increases. In contrast, we find the impact of growth variables is non-monotonic; for example, both rapid increases and declines in sales are associated with increased default tendencies throughout the world. Both of these observations are quite consistent with the observations of fundamental analysis, and the intuitive nature of the drivers makes the model easier to implement in a credit process.
+> While each of these ratios relates to varying degrees to credit risk, our research shows a nonlinear relationship between many of these ratios  and a firm’s probability of default. As demonstrated in Figure 2, below, the probability of default typically decreases as net income to assets (ROA) increases, but the sensitivity of the default likelihood to ROA diminishes as ROA increases. In contrast, we find the impact of growth variables is non-monotonic; for example, both rapid increases and declines in sales are associated with increased default tendencies throughout the world. Both of these observations are quite consistent with the observations of fundamental analysis, and the intuitive nature of the drivers makes the model easier to implement in a credit process.
 
 FIGURE 2 The relationship between a financial statement ratio and default is generally “non-linear”
 
@@ -336,7 +329,7 @@ For our purposes, a public company is a firm with publicly traded common stock. 
 Some privately traded companies do issue publicly traded bonds. The prices on such bonds are also prices on a claim on the firm’s assets. Nevertheless, meaningful price series data on such bonds are rarely available due to the lack of liquidity.
 
 ## MOODY’S KMV RISKCALC v3.1 MODEL
----
+
 Specifically designed to predict the default likelihood of public firms and incorporate this indicator into a model for private firms: the distance-to-default measure. RiskCalc v3.1 imbeds credit insight from market information at the industry sector level, rather than analogizing between a single private firm and implied market values for that company as was done in PFM. That industry sector information comes from the current month information on the sector’s average distance-to-default.
 
 The distance-to-default measure used in the Moody’s KMV public EDF credit measures represents the number of standard deviations (or distance) between the market value of a firm’s assets and its relevant liabilities. This measure combines a firm’s liabilities, market value, and volatility of assets into a single measure that determines the probability of default for a public firm (Crosbie, 2003). We found that including the distance-to-default factor, not on the individual private firm but from an aggregation of public companies in the corresponding sector, improves the performance of our private firm models by incorporating forward-looking market price dynamics.
@@ -352,7 +345,7 @@ Figure 3, below, shows an example of this forward-looking property for an actual
 Note how in Figure 3, the EDF generated by the full version of the model (solid line) provides a leading indicator of the increasing risk of the firm in 1998 and 1999. Note that for entire year of 1998, the financial statement mode shows the EDF measure of this firm to be around 6 percent even though the complete model reveals that, in actuality, it has approximately doubled its default probability within the same year. Moreover, the increase in the EDF level that showed up in the financial statements in mid-1999 was predicted by RiskCalc v3.1 well in advance, using forward-looking factors. As the graph reveals, in 1998-2000, the ultimate EDF level was substantially higher using the combined information than it would have been using the financial statements alone.
 
 The theory behind this measurement is based on a long tradition of structural models of default that have their origins in the Merton model (cf., Merton, 1974). Recent advances in this line of research are Leland & Toft (1996), Longstaff and Schwartz (1995), and Zhou (1997). This measure has been extensively validated to be a strong predictor of defaults (cf., Kurbat and Korablev, 2002). Moody’s KMV currently measures this distance-to-default for every publicly traded firm throughout the world.
----
+
 |LaRoche Industries Inc.|EDF RiskCalc 3.1|Financial Statement Only Mode|
 |---|---|---|
 |0.14|0.12|0.10|
@@ -377,7 +370,7 @@ The higher the difference in Log Likelihood, the better the predicted default ra
 Before we describe in more detail how we tested the final model in Section 4, it is useful to understand some of the intermediate results of our research. Table 2 provides evidence of the importance of capturing industry effects in the FSO mode of RiskCalc v3.1.
 
 MOODY’S KMV RISKCALC v3.1 MODEL
----
+
 | |Increase in model power and accuracy from introducing industry controls| | |
 |---|---|---|---|
 | |One-year Horizon| |Five-year Horizon|
@@ -406,7 +399,7 @@ By estimating the model with industry-specific adjustments, we control for this 
 |Services|49.90%|
 |Trade (Retail & Wholesale)|15.10%|
 |Unassigned|35.90%|
----
+
 ## Further Modeling Improvements
 
 We invested in additional research to improve data quality and default risk estimates by the RiskCalc v3.1 model—with valuable results. Moody’s KMV researched a number of additional techniques to address specific challenges we faced when modeling and predicting default risk. While we did not choose to implement all of these techniques in the final RiskCalc v3.1 model, each test confirmed the robustness of the model. Below we provide a detailed analysis of three types of these techniques and our results. For additional technical details, please see the Technical Document. Our research falls into three categories:
@@ -422,7 +415,7 @@ As described earlier in this paper, the RiskCalc models are estimated based on t
 In addition to developing and implementing a battery of tests and diagnostic tools to manage data quality, it is instructive to highlight two pioneering techniques we found valuable for managing the effects of misclassification errors and questionable accounting. Both techniques proved useful in the data-cleansing process because they identified issues of integrity that standard methods missed. Both techniques discussed below also helped us better interpret the model.
 
 As described above, the CRD contains 6.5 million financial statements on more than 1.5 million unique private firms with more than 97,000 default events worldwide.
----
+
 ## Improved data quality leads to improved predictive power
 
 As a result of our extended data acquisition efforts, our data coverage has vastly expanded. From a modeling point of view, an appropriate question to address is whether this expansion in quantity was also coupled by an enhancement in quality of data. Thus, in order to assess whether the new and broader dataset is of better quality, we designed the following experiment:
@@ -447,8 +440,6 @@ For definition of accuracy ratio, please refer to the Appendix in Kocagil and Re
 
 Since RiskCalc version 1.0 was released in early 2000, the 2000-2002 hold-out sample is out of sample for both RiskCalc v1.0 and the “pseudo new” model.
 
-Moody's IKM
----
 ## Misclassification Errors
 
 Default prediction challenge: Identifying defaults. The process of matching default events in the CRD with financial statements requires managing the potential for defaults to be misclassified as non-defaults and vice versa. These misclassification errors—which have the potential to compromise model performance—are endemic to middle-market lending institutions and typically occur in the following common scenarios:
@@ -472,7 +463,7 @@ Default prediction challenge: Questionable accounting. Each batch of raw account
 - Financial statements could include outright fraud to avoid taxes or to ensure credit receipt.
 
 Researching alternatives. A new statistical technique has been developed by Nigrini et al. (1996, 2000) to address these types of problems. When financial statement data values are appropriately rescaled, Benford’s Law suggests that certain types of figures should follow a specific statistical distribution. Nigrini (2000) advocates using departures from this distribution as a method for signaling potential anomalies in accounting data.
----
+
 Our results. We applied the Nigrini technique across the different banks in our sample for each of the input variables to our model. We found evidence of excessive rounding in some variables and at certain banks. We experimented with different methods for managing this loss of information. For example, we flagged observations in which there appeared to be a high probability of excessive rounding errors. We then estimated the model with and without these observations and compared model performance both in- and out-of-sample. On balance, we found that model performance was stronger when we included these observations, perhaps because the practice of rounding is a fairly common one in the middle market. Therefore, the final model was estimated with these observations, but we retain the ability to flag potentially suspicious accounting practices.
 
 3.4.2. Alternative Estimation Techniques
@@ -492,10 +483,6 @@ Duration Modeling
 Default prediction challenge: Default events or intensities and the problem of censorship. To date, RiskCalc private models have been based in part on probit or logit specifications. The dependent variable is taken as a discrete event: whether or not a firm defaults within a certain window of time. We typically estimate separate one-year and five-year models, which allows the relative importance of different variables in predicting default rates to vary at different.
 
 By excessive rounding, we mean more numbers in which the second and third digit were both zero (e.g., 1,000 or 200) than would be expected according to Benford’s Law.
-
-Moody's IKM
----
-horizons, which we see as an advantage of the approach. A possible shortcoming of this approach, however, is that it does not provide a natural means of dealing with censored observations.
 
 Researching alternatives: Duration approaches directly model the survival time of a firm. Under such models, the dependent variable is the time until default. If a firm has not yet defaulted, then the time to default is taken as the time until it last could have been observed as having defaulted, but it is treated as a censored observation in the likelihood function. A common duration model is the Cox proportional hazards model (for details, see Klein and Moeschberger, 1997). This model allows for the hazard function of a firm to be non-parametric given a set of explanatory variables. A change in the explanatory variables makes a proportionate adjustment to the hazard function. Therefore, the Cox proportional hazards model imposes the restriction that relative importance of different variables for predicting default is constant across all horizons.
 
@@ -518,8 +505,6 @@ It has been argued that high quality credits yield positively sloped term struct
 Hazard rates could potentially be non-monotonic. For example, newly issued debt instruments tend to have low hazard rates initially, which start increasing in subsequent years (Keenan, 1999). Nevertheless, we find that the potential error introduced by the assumption of monotonic hazards is relatively small.
 
 ### MOODY’S KMV RISKCALC v3.1 MODEL
----
-## FIGURE 4 Hazard rates implied by Moody’s Investors Service Default Studies
 
 | |Hazard rate (log scale)|
 |---|---|
@@ -549,8 +534,6 @@ It is important to note that this term structure is different than it would be i
 
 Accounting for mean reversion is important when pricing loans. For example, if a user assumed that the one-year default probability of a given loan would remain constant over time, the user would under-price higher quality credits since their default probabilities tend to deteriorate over time. Likewise, the user would risk over-pricing low quality credits, as default probabilities for these firms tend to improve over time.
 
-Moody's IKM
----
 #### MODEL VALIDATION
 
 The superior performance of the new RiskCalc v3.1 is unambiguous. This section presents a number of our analyses. With the introduction of the RiskCalc v3.1 models, Moody’s KMV continues to lead the industry in research, development and application of rigorous, precise default model validation techniques. Our tests indicate that the new RiskCalc v3.1 models outperform all others by measurably large, statistically significant, and economically meaningful margins. As we describe in the sections below on model power and calibration over time, our exhaustive validation assessments demonstrate that:
@@ -576,7 +559,7 @@ We consider validation in terms of two distinct dimensions of model quality. The
 A model’s calibration describes how well its predictions of default probability agree with actual outcomes. For example, it describes how close the model’s default probability predictions match actual default rates, rather than describing how well the model differentiates defaulting borrowers from non-defaulting borrowers.
 
 Please see the RiskCalc v3.1 Modeling Methodology document for more detail.
----
+
 ## Validation via Out-of-Sample Data
 
 Moody’s KMV uses a rigorous framework for model validation that emphasizes testing on data that was not included in the development sample. This data is referred to as out-of-sample data.
@@ -760,15 +743,11 @@ In order to demonstrate the magnitude of the impact of using the new RiskCalc v3
 Estimated benefits (in dollars of additional profit) of using the RiskCalc v3.1 model versus alternative models for a typical mid-sized bank ($4.24 billion in credit in 2002)*
 
 * Example client selected from Moody’s KMV Credit Research Database
----
+
 ## SUMMARY AND CONCLUSIONS
 
 RiskCalc v3.1 is the most powerful default prediction technology available for assessing middle-market credit risk. Over the past decade, Moody’s KMV has refined its techniques for gauging credit quality in the middle market. The result is the RiskCalc v3.1 model, the next-generation of private firm default-prediction technology. Using extensive research and rich, proprietary data sets, we developed unprecedented insight into the drivers of default for private firms. RiskCalc v3.1 incorporates this learning by combining the RiskCalc v1.0 framework, the industry’s leading middle-market modeling approach, with the Moody’s KMV distance-to-default value, a proprietary measure that extracts forward-looking sector information from the equity markets. Our new default prediction tool equips you to convert equity information into credit signals. We also tested and introduced a number of additional innovations including a full continuous term structure of default rates and leading edge innovative approaches to validation, as well as features that regulators require under the New Basel Capital Accord. The resulting RiskCalc v3.1 model is more intuitive to use and provides better indications of default probability than was possible in the past—and our testing confirms this. The RiskCalc v3.1 model outperforms all other models examined by substantial margins, both in terms of predictive power and in terms of the accuracy of the probabilities that are produced by the models. RiskCalc v3.1 will result in significant improvements in credit portfolio performance for users.
 
-MOODY’S KMV RISKCALC v3.1 MODEL
-
-33
----
 ## APPENDIX
 
 |Financial Statement Ratios used in RiskCalc v3.1 U.S., Canada, U.K., and Japan.| |
@@ -813,8 +792,6 @@ MOODY’S KMV RISKCALC v3.1 MODEL
 |SIZE|SIZE|
 |• Total Assets|• Real Net Sales|
 
-Moody's KM
----
 ## REFERENCES
 
 |1.|The Basel Committee on Banking Supervision. Third Consultative Paper Bank for International Settlements, 2003 (http://www.bis.org/bcbs/bcbscp3.htm).|
@@ -843,8 +820,6 @@ Moody's KM
 |23.|Stein, Roger M., Benchmarking Default Prediction Models: Pitfalls and Remedies in Model Validation, Moody’s KMV, New York, 2002.|
 |24.|Stein, Roger M. “Power, Profitability and Prices: Why Powerful Models Increase Profits and How to Define a Lending Cutoff If You Must.” Moody’s KMV, November 2003.|
 
-MOODY’S KMV RISKCALC v3.1 MODEL 35
----
 ## References
 
 Stein, Roger M., Ahmet E. Kocagil, Jeff Bohn, and Jalal Akhavein. “Systematic and Idiosyncratic Risk in Middle-Market Default Prediction: A Study of pe Performance of pe RiskCalc TM and PFMTM Models.” Moody’s Investor Services, February 2003.
