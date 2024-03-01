@@ -21,8 +21,8 @@ class Demo():
         self.reviewer = OpenAIReviewer(model='gpt-4-turbo-preview')
         self.guidance = read_file('data/whitepaper/AB_2013-07_Model_Risk_Management_Guidance.txt')
         self.moodel = read_file('data/whitepaper/riskcalc-3.1-whitepaper.txt')
-        self.moodel_pdf = 'data/whitepaper/riskcalc-3.1-whitepaper.pdf'
-        self.guidance_pdf = 'data/whitepaper/AB_2013-07_Model_Risk_Management_Guidance.pdf'
+        self.moodel_md = read_file('data/whitepaper/riskcalc-3.1-whitepaper.md')
+        self.guidance_md = read_file('data/whitepaper/AB_2013-07_Model_Risk_Management_Guidance.md')
         self.run_analysis = False
         self.run_review = False
         self.objective = 0
@@ -62,11 +62,11 @@ class Demo():
         whitepaper, report, guidance, review = st.tabs(["Whitepaper", "Analize", "AB 2013-07", "Review"])
         with whitepaper:
             with st.container(border=True):
-                pdf_viewer(self.moodel_pdf, height=800)
+                st.markdown(self.moodel_md)
 
         with guidance:
             with st.container(border=True):
-                pdf_viewer(self.guidance_pdf, height=800)
+                st.markdown(self.guidance_md)
 
         with report:
             with st.container(border=True):
@@ -77,7 +77,7 @@ class Demo():
                 if self.run_analysis:
                     with st.spinner('Analyzing...'):
                         #st.markdown(self.reviewer.analyze(self.moodel, Demo.objectives[self.objective]))
-                        self.report = st.write_stream(self.reviewer.analyze_stream(self.moodel, Demo.objectives[self.objective]))
+                        self.report = st.write_stream(self.reviewer.analyze_stream(self.moodel_md, Demo.objectives[self.objective]))
                         self.run_analysis = False
                 else:
                     st.markdown(self.report)
@@ -90,7 +90,7 @@ class Demo():
                 if self.run_review:
                     with st.spinner('Reviewing...'):
                         #st.markdown(self.reviewer.analyze(self.moodel, Demo.objectives[self.objective]))
-                        self.report = st.write_stream(self.reviewer.review_stream(self.guidance, Demo.objectives[self.objective], self.report))
+                        self.report = st.write_stream(self.reviewer.review_stream(self.guidance_md, Demo.objectives[self.objective], self.report))
                         self.run_review = False
                 else:
                     st.markdown(self.review)
