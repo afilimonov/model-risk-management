@@ -14,18 +14,40 @@ class MRMReviewer(ABC):
         pass
 
     @abstractmethod
-    def review(self, model, objective, analysis) -> str:
+    def review(self, guidance, objective, analysis) -> str:
         pass
 
 
 class OpenAIReviewer(MRMReviewer):
-    analysis_instructions = f"""As a model risk validator, please conduct a detailed model analysis.
-    You are provided with model whitepaper and analysis objective. 
-    Your response should use Markdown forman and include:
-    Bullet points highlighting specific analysis topic with references or direct quotations from the whitepaper, 
-    citing specific sections, tables, or figures that support the analysis
-    A clear, evidence-based recommendation on whether the model should be adopted for usage,
-    considering the identified limitations."""
+
+    def analysis_instructions(sefl):
+        instructions = """As a model risk validator, please conduct a detailed model analysis.
+You are provided with model whitepaper and analysis objective. 
+Your response should use Markdown forman and include:
+Bullet points highlighting specific analysis topic with references or direct quotations from the whitepaper, 
+citing specific sections, tables, or figures that support the analysis
+A clear, evidence-based recommendation on whether the model should be adopted for usage,
+considering the identified limitations."""
+        return instructions
+    
+    def review_instrucitons(self, guidance, objective, analysis):
+        innstructions = f"""Act as a peer reviewer to prvide a critcal review of model analysis document against FHFA AB 2013-17 guidance.
+You are provided with analysis objective, and analysis document to perform the peromrme effective challenge. 
+Focus on reviewing and challenging model analyssis document for compliance with AB guidance.
+Your response should use well formatted Markdown forman and include:
+Bullet points highlighting specific observiation, concerns and limitation of the provided analsis with direct quotations from the 
+model analsisis document citing specific sections that support the challenge.
+A clear, evidence-based sumary of finding and recommendations for improving analysis document.
+<guidance>
+{guidance}
+</guidance>
+<objective>
+{objective}
+</objective>
+<analysis>
+{analysis}
+</analysis>"""
+        return innstructions
 
     def __init__(self, model='gpt-4', temperature=0, max_tokens=4096, top_p=0.5, frequency_penalty=0, presence_penalty=0):
         super().__init__()
@@ -41,7 +63,7 @@ class OpenAIReviewer(MRMReviewer):
     def analyze(self, model, objective) -> str:
         
         messages = [
-            ChatMessage(role="system", content=self.analysis_instructions), 
+            ChatMessage(role="system", content=self.analysis_instructions()), 
             ChatMessage(role="assistant", content="provide model whitepaper"),
             ChatMessage(role="user", content=model),
             ChatMessage(role="assistant", content="what is analysis objective"),
@@ -50,10 +72,10 @@ class OpenAIReviewer(MRMReviewer):
         response = self.llm.chat(messages)
         return response.message.content
 
-    def analyze_stream(self, model, objective) -> str:
+    def analyze_stream(self, model, objective):
         
         messages = [
-            ChatMessage(role="system", content=self.analysis_instructions), 
+            ChatMessage(role="system", content=self.analysis_instructions()), 
             ChatMessage(role="assistant", content="provide model whitepaper"),
             ChatMessage(role="user", content=model),
             ChatMessage(role="assistant", content="what is analysis objective"),
@@ -63,30 +85,21 @@ class OpenAIReviewer(MRMReviewer):
         for r in response:
             yield r.delta
     
-    def review(self, model, objective, analysis) -> str:
-        innstructions = f"""Act as a reviewer to prvide effective challenge of model analysis document.
-        Focus on reviewing and challenging model analyssis document and not the model itself.
-        You are provided with model whitepaper, analysis objective, and analysis document to perform the peromrme effective challenge. 
-        Your response should use well formatted Markdown forman and include:
-        Bullet points highlighting specific observiation, concerns and limitation with direct quotations from the 
-        model analsisis document citing specific sections that support the challenge.
-        A clear, evidence-based sumary of finding and recommendations for improving analysis document.
-        <whitepaper>
-        {model}
-        </whitepaper>
-        <objective>
-        {objective}
-        </objective>
-        <analysis>
-        {analysis}
-        </analysis>"""
-    
-    
+    def review(self, guidance, objective, analysis) -> str:
+        innstructions = self.review_instrucitons(guidance, objective, analysis)
         messages = [ChatMessage(role="system", content=innstructions)]
 
         response = self.llm.chat(messages)
         return response.message.content
-    
+
+    def review_stream(self, guidance, objective, analysis):
+        innstructions = self.review_instrucitons(guidance, objective, analysis)
+        messages = [ChatMessage(role="system", content=innstructions)]
+
+        response = self.llm.stream_chat(messages)
+        for r in response:
+            yield r.delta
+
     class BendrockReviewer(MRMReviewer):
         def __init__(self, model='anthropic.claude-v2:1', temperature=0, tokens=3000, top_p=0.9, top_k=250):
             super().__init__()
@@ -100,7 +113,8 @@ class OpenAIReviewer(MRMReviewer):
             instructions = f"""Human: As a model risk validator, please conduct a detailed model analysis focusing on this objective: {question}
             You are provided with model whitepaper to perform the analysis. 
             Your response should use well formatted Markdown forman and include:
-            Bullet points highlighting specific analysis topic with references or direct quotations from the whitepaper, citing specific sections, tables, or figures that support the analysis
+            Bullet points highlighting specific analysis topic with references or direct quotations from the whitepaper and AB guidance,
+            citing specific sections that support the reivew.
             A clear, evidence-based recommendation on whether the model should be adopted for usage,
             considering the identified limitations.
             <context>

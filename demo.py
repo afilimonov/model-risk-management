@@ -22,15 +22,25 @@ class Demo():
         self.guidance = read_file('data/whitepaper/AB_2013-07_Model_Risk_Management_Guidance.txt')
         self.moodel = read_file('data/whitepaper/riskcalc-3.1-whitepaper.txt')
         self.moodel_pdf = 'data/whitepaper/riskcalc-3.1-whitepaper.pdf'
-        self.render = False
+        self.guidance_pdf = 'data/whitepaper/AB_2013-07_Model_Risk_Management_Guidance.pdf'
+        self.run_analysis = False
+        self.run_review = False
         self.objective = 0
+        self.report = ''
+        self.review = ''
 
     def analyze(self):
-        self.render = True
+        self.run_analysis = True
+    
+    def do_review(self):
+        self.run_review = True
 
     def set_objective(self):
         self.objective = Demo.objectives.index(st.session_state.objective)
-        self.render = False
+        self.run_analysis = False
+        self.run_review = False
+        self.report = ''
+        self.review = ''
 
     def run(self):
 
@@ -40,7 +50,6 @@ class Demo():
         )
 
         st.header("Model Whitepaper Analysis")
-        # clear_button = st.sidebar.button(label='Clear Chat', on_click=self.clear)
 
         st.session_state.objectives=st.selectbox(
             '''Analysis Objective''',
@@ -48,21 +57,43 @@ class Demo():
             self.objective,
             key='objective',
             on_change=self.set_objective)
-        analyze_button = st.button(label='Analize', on_click=self.analyze)
+        # analyze_button = st.button(label='Analize', on_click=self.analyze)
         
-        report, whitepaper = st.tabs(["Feeling Lucky!", "Whitepaper"])
+        whitepaper, report, guidance, review = st.tabs(["Whitepaper", "Analize", "AB 2013-07", "Review"])
         with whitepaper:
-            pdf_viewer(self.moodel_pdf, height=800)
+            with st.container(border=True):
+                pdf_viewer(self.moodel_pdf, height=800)
+
+        with guidance:
+            with st.container(border=True):
+                pdf_viewer(self.guidance_pdf, height=800)
+
         with report:
             with st.container(border=True):
                 st.markdown(f"**Objective**: {Demo.objectives[self.objective]}")
+
             with st.container(border=True):
-                if self.render:
+                analyze_button = st.button(label='Analize', on_click=self.analyze, disabled=self.report != '')
+                if self.run_analysis:
                     with st.spinner('Analyzing...'):
                         #st.markdown(self.reviewer.analyze(self.moodel, Demo.objectives[self.objective]))
-                        st.write_stream(self.reviewer.analyze_stream(self.moodel, Demo.objectives[self.objective]))
+                        self.report = st.write_stream(self.reviewer.analyze_stream(self.moodel, Demo.objectives[self.objective]))
+                        self.run_analysis = False
+                else:
+                    st.markdown(self.report)
+        with review:
+            with st.container(border=True):
+                st.markdown(f"**Objective**: {Demo.objectives[self.objective]}")
 
-
+            with st.container(border=True):
+                analyze_button = st.button(label='Review', on_click=self.do_review, disabled=self.report == '')
+                if self.run_review:
+                    with st.spinner('Reviewing...'):
+                        #st.markdown(self.reviewer.analyze(self.moodel, Demo.objectives[self.objective]))
+                        self.report = st.write_stream(self.reviewer.review_stream(self.guidance, Demo.objectives[self.objective], self.report))
+                        self.run_review = False
+                else:
+                    st.markdown(self.review)
 
 if 'demo' not in st.session_state:
     st.session_state['demo'] = Demo()
