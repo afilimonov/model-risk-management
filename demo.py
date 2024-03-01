@@ -59,7 +59,7 @@ class Demo():
             on_change=self.set_objective)
         # analyze_button = st.button(label='Analize', on_click=self.analyze)
         
-        whitepaper, report, guidance, review = st.tabs(["Whitepaper", "Analize", "AB 2013-07", "Review"])
+        whitepaper, report, guidance, review = st.tabs(["Whitepaper :file_folder:", "Analize :bulb:", "AB 2013-07 :file_folder:", "Review :ballot_box_with_check:"])
         with whitepaper:
             with st.container(border=True):
                 st.markdown(self.moodel_md)
