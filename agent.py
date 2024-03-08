@@ -20,20 +20,31 @@ class MRMReviewer(ABC):
 
 class OpenAIReviewer(MRMReviewer):
 
-    def analysis_instructions(sefl):
-        instructions = """As a model risk validator, please conduct a detailed model analysis.
-You are provided with model whitepaper and analysis objective. 
+    def analysis_instructions(sefl, guidance, model, objective):
+        instructions = f"""As a model risk validator, please conduct a detailed model analysis.
+You are provided with model whitepaper and analysis objective. Focus on the objective and perform the analysis.
+Use FHFA AB 2013-17 guidance as applicable when performing the analysis.
 Your response should use Markdown forman and include:
-Bullet points highlighting specific analysis topic with references or direct quotations from the whitepaper, 
-citing specific sections, tables, or figures that support the analysis
+Bullet points highlighting specific analysis topics. Iclude references and direct quotations from the
+whitepaper and AB guidance suporting the analysis
 A clear, evidence-based recommendation on whether the model should be adopted for usage,
-considering the identified limitations."""
+considering the identified limitations.
+<objective>
+{objective}
+</objective>
+<guidance>
+{guidance}
+</guidance>
+<whitpaper>
+{model}
+</whitpaper>
+"""
         return instructions
     
     def review_instrucitons(self, guidance, objective, analysis):
         innstructions = f"""Act as a peer reviewer to prvide a critcal review of model analysis document against FHFA AB 2013-17 guidance.
 You are provided with analysis objective, and analysis document to perform the peromrme effective challenge. 
-Focus on reviewing and challenging model analyssis document for compliance with AB guidance.
+Focus on reviewing and challenging model analyssis document for compliance with AB guidance. You should also consider the analsis objective.
 Your response should use well formatted Markdown forman and include:
 Bullet points highlighting specific observiation, concerns and limitation of the provided analsis with direct quotations from the 
 model analsisis document citing specific sections that support the challenge.
@@ -63,7 +74,7 @@ A clear, evidence-based sumary of finding and recommendations for improving anal
     def analyze(self, model, objective) -> str:
         
         messages = [
-            ChatMessage(role="system", content=self.analysis_instructions()), 
+            ChatMessage(role="system", content=self.analysis_instructions(model, objective)), 
             ChatMessage(role="assistant", content="provide model whitepaper"),
             ChatMessage(role="user", content=model),
             ChatMessage(role="assistant", content="what is analysis objective"),
@@ -72,14 +83,15 @@ A clear, evidence-based sumary of finding and recommendations for improving anal
         response = self.llm.chat(messages)
         return response.message.content
 
-    def analyze_stream(self, model, objective):
-        
+    def analyze_stream(self, model, objective, guidanance=None):
+        instructions = self.analysis_instructions(model, objective, guidanance)
+        # print(instructions)
         messages = [
-            ChatMessage(role="system", content=self.analysis_instructions()), 
-            ChatMessage(role="assistant", content="provide model whitepaper"),
-            ChatMessage(role="user", content=model),
-            ChatMessage(role="assistant", content="what is analysis objective"),
-            ChatMessage(role="user", content=objective)
+            ChatMessage(role="system", content=instructions) #, 
+#            ChatMessage(role="assistant", content="provide model whitepaper"),
+#            ChatMessage(role="user", content=model),
+#            ChatMessage(role="assistant", content="what is analysis objective"),
+#            ChatMessage(role="user", content=objective)
         ]
         response = self.llm.stream_chat(messages)
         for r in response:

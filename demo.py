@@ -13,9 +13,9 @@ logger = getLogger(__name__)
 
 class Demo():
 
-    objectives = ['Identify any specific limitations or concerns regarding the use of the model in a stagflation environment',
-                  'Consider model usage risks in hyper-inflation scenario',
-                  'What is model impact on meaning of life']
+    objectives = ['Does the model whitepar comply with AB requirements for model documentation?',
+                  'Consider modle usage risks in stagflation scenario',
+                  'Consider model usage risks in hyper-inflation scenario']
 
     def __init__(self):
         self.reviewer = OpenAIReviewer(model='gpt-4-turbo-preview')
@@ -60,7 +60,7 @@ class Demo():
             on_change=self.set_objective)
         # analyze_button = st.button(label='Analize', on_click=self.analyze)
         
-        whitepaper, report, guidance, review = st.tabs(["Whitepaper :file_folder:", "Analize :bulb:", "AB 2013-07 :file_folder:", "Review :ballot_box_with_check:"])
+        whitepaper, guidance, report, review = st.tabs(["Whitepaper :file_folder:", "AB 2013-07 :file_folder:", "Analize :bulb:", "Review :ballot_box_with_check:"])
         with whitepaper:
             with st.container(border=True):
                 st.markdown(self.moodel_md)
@@ -78,7 +78,7 @@ class Demo():
                 if self.run_analysis:
                     with st.spinner('Analyzing...'):
                         #st.markdown(self.reviewer.analyze(self.moodel, Demo.objectives[self.objective]))
-                        self.report = st.write_stream(self.reviewer.analyze_stream(self.moodel_md, Demo.objectives[self.objective]))
+                        self.report = st.write_stream(self.reviewer.analyze_stream(self.moodel_md, Demo.objectives[self.objective], self.guidance))
                         self.run_analysis = False
                 else:
                     st.markdown(self.report)

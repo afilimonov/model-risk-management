@@ -1,6 +1,5 @@
 import os
 import logging
-import base64
 
 def getLogLevel() -> int:
     # get the log level from an environment variable
