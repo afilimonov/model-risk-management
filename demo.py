@@ -14,7 +14,7 @@ logger = getLogger(__name__)
 class Demo():
 
     objectives = ['Does the model whitepaper comply with AB requirements for model documentation?',
-                  'Consider modle usage risks in stagflation scenario',
+                  'Consider model usage risks in stagflation scenario',
                   'Consider model usage risks in hyper-inflation scenario']
 
     def __init__(self):
