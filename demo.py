@@ -13,7 +13,7 @@ logger = getLogger(__name__)
 
 class Demo():
 
-    objectives = ['Does the model whitepar comply with AB requirements for model documentation?',
+    objectives = ['Does the model whitepaper comply with AB requirements for model documentation?',
                   'Consider modle usage risks in stagflation scenario',
                   'Consider model usage risks in hyper-inflation scenario']
 
@@ -60,7 +60,7 @@ class Demo():
             on_change=self.set_objective)
         # analyze_button = st.button(label='Analize', on_click=self.analyze)
         
-        whitepaper, guidance, report, review = st.tabs(["Whitepaper :file_folder:", "AB 2013-07 :file_folder:", "Analize :bulb:", "Review :ballot_box_with_check:"])
+        whitepaper, guidance, report, review = st.tabs(["Whitepaper :file_folder:", "AB 2013-07 :file_folder:", "Analyze :bulb:", "Review :ballot_box_with_check:"])
         with whitepaper:
             with st.container(border=True):
                 st.markdown(self.moodel_md)
@@ -74,7 +74,7 @@ class Demo():
                 st.markdown(f"**Objective**: {Demo.objectives[self.objective]}")
 
             with st.container(border=True):
-                analyze_button = st.button(label='Analize', on_click=self.analyze, disabled=self.report != '')
+                analyze_button = st.button(label='Analyze', on_click=self.analyze, disabled=self.report != '')
                 if self.run_analysis:
                     with st.spinner('Analyzing...'):
                         #st.markdown(self.reviewer.analyze(self.moodel, Demo.objectives[self.objective]))
