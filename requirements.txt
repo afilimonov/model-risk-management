@@ -8,3 +8,4 @@ streamlit-pdf-viewer==0.0.8
 boto3
 llama-parse
 llama-index-llms-bedrock
+python-dotenv
