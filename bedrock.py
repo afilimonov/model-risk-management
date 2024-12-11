@@ -39,14 +39,13 @@ class Jamba(BedrockModel):
     jamba_15_mini = 'ai21.jamba-1-5-mini-v1:0'
 
     def get_body(self, instructions, messages):
-        prompt = [
-        {
+        system = [{
             "role": "system",
             "content": innstrucitons
-        }] = messages
+        }]
         
         return json.dumps({
-        "messages": prompt,
+        "messages": system + message,
         "max_tokens": self.max_tokens,
         "temperature": self.temperature,
         "top_p": self.top_p 
