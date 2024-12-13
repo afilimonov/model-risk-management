@@ -9,3 +9,6 @@ boto3
 llama-parse
 llama-index-llms-bedrock
 python-dotenv
+tabulate
+instructor
+anthropic[bedrock]
