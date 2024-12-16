@@ -12,3 +12,4 @@ python-dotenv
 tabulate
 instructor
 anthropic[bedrock]
+json-repair
