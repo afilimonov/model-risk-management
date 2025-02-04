@@ -8,17 +8,68 @@ import streamlit as st
 from agent import OpenAIReviewer
 from utils import getLogger, read_file
 from streamlit_pdf_viewer import pdf_viewer
+import instructor
+from anthropic import AnthropicBedrock
+from pydantic import BaseModel
+from tabulate import tabulate
+import textwrap
+import json_repair
+from utils import read_file, save_file
 
 logger = getLogger(__name__)
 
+class AnthropicReviewer():
+    
+    sonnet3 = 'anthropic.claude-3-sonnet-20240229-v1:0'
+    haiku3 = 'anthropic.claude-3-haiku-20240307-v1:0'
+    
+    def __init__(self):
+        self.client = AnthropicBedrock()
+        
+    def generate_tasks(question, document, model="anthropic.claude-3-haiku-20240307-v1:0"):
+        message = f"""
+        Generate a comprehensive list of model analysis tasks based on provided model whitepaper. Each task includes short description, detailed instructions and list of examples to answer this question: {question}.
+        Be as detailed as possible. Number of identified tasks should ensure comprehensive analysis.
+        Your response should be a valid json object and nothing else.
+        """
+        example = """
+          Example:
+        {'tasks': [
+            {
+             'descripiton': 'task desciption',
+             'insturctions': 'task instructions',
+             'examples': ['example', 'example',...]
+            },
+          ...
+         ]}
+        """
+        guidance = f"""
+        <whitepaper>
+        {document}
+        </whitepaper>
+        """
+
+        return a_client.messages.create(
+            model=model,
+            system= guidance,
+            max_tokens=3000,
+            messages=[
+                {
+                    "role": "user",
+                    "content": message + example,
+                }
+            ]#,
+            #response_model=Task,
+            )        
+
 class Demo():
 
-    objectives = ['Does the model whitepaper comply with AB requirements for model documentation?',
-                  'Consider model usage risks in stagflation scenario',
-                  'Consider model usage risks in hyper-inflation scenario']
+    objectives =['Assess model whitepaper for compliance with AB guidance',
+                 'Assess model whitepaper for compliance with AB guidance requirements for model documentation']
 
     def __init__(self):
-        self.reviewer = OpenAIReviewer(model='gpt-4-turbo-preview')
+        # self.reviewer = OpenAIReviewer(model='gpt-4-turbo-preview')
+        self.reviewer = AnthropicReviewer()
         self.guidance = read_file('data/whitepaper/AB_2013-07_Model_Risk_Management_Guidance.txt')
         self.moodel = read_file('data/whitepaper/riskcalc-3.1-whitepaper.txt')
         self.moodel_md = read_file('data/whitepaper/riskcalc-3.1-whitepaper.md')
