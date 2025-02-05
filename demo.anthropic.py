@@ -64,7 +64,7 @@ class AnthropicReviewer():
         
     def generate_compliance_tasks(self, question, document, model=haiku3):
         message = f"""
-        Generate a comprehensive list of tasks to be used to analyze model whitepare compiance with provided AB guidance. Each task includes short description, detailed instructions and list of examples to answer this compliance question: {question}.
+        Generate a comprehensive list of tasks to be used to analyze model whitepare compiance with provided AB guidance. Each task includes short description, detailed instructions and examples of evdience to look for to answer this compliance question: {question}.
         Be as detailed as possible. Number of identified tasks should ensure comprehensive analysis.
         Your response should be a valid json object and nothing else. It should pass json validation when creating loading response into json object using joson.loads python funciton.
         """
@@ -74,7 +74,7 @@ class AnthropicReviewer():
             {
              'description': 'task desciption',
              'insturctions': 'task instructions',
-             'examples': ['example', 'example',...]
+             'examples': 'examples of evidence to look for']
             },
           ...
          ]}
@@ -118,13 +118,11 @@ class AnthropicReviewer():
         {task['description']}
 
         ## Instructions
-        {task['instructions']}"""
+        {task['instructions']}
 
-        ## Examples"""
-
-        examples = "\n".join("- " + e for e in task['examples']) + "\n"
-
-        whitepaper = f"""
+        ## Examples
+        {task['examples']}
+        
         ## Whitepaer
         {document}
         """
@@ -137,7 +135,7 @@ class AnthropicReviewer():
         messages=[
             {
                 "role": "user",
-                "content": message + whitepaper,
+                "content": message,
             }
         ])
 
@@ -262,12 +260,21 @@ class Demo():
         
     def task_table(self):
         if self.tasks is None:
-            return ''        
+            return        
         headers = ['Task', 'Instructions', 'Examples']
-        data = []
+        #data = []
+        data = ''
         for task in self.tasks['tasks']:
-            data.append([task['description'], task['instructions'], task['examples']])
-            return tabulate(data, headers=headers, tablefmt='pipe')
+            #data.append([task['description'], task['instructions'], task['examples']])
+            st.markdown('### Task')
+            st.markdown(task['description'])
+            st.markdown('### Instrucitons')
+            st.markdown(task['instructions'])
+            st.markdown('### Examples')
+            st.markdown(task['examples'])
+        
+        #return data
+        #return tabulate(data, headers=headers, tablefmt='pipe')
 
 
     def run(self):
@@ -306,11 +313,13 @@ class Demo():
                 if self.run_generate:
                     with st.status(f"Generating tasks for: {Demo.objectives[self.objective]}"):
                         self.tasks = self.reviewer.generate_compliance_tasks(Demo.objectives[self.objective], self.guidance_md)
-                    st.markdown(self.task_table())
+                    #st.markdown(self.tasks)
+                    self.task_table()
                     #self.report = st.write_stream(self.reviewer.analyze_stream(self.moodel_md, Demo.objectives[self.objective], self.guidance))
                     self.run_generate = False
                 else:
-                    st.markdown(self.task_table())
+                    #st.markdown(self.tasks)
+                    self.task_table()
                     
         with analysis:
             with st.container(border=True):
