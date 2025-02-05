@@ -118,7 +118,7 @@ class AnthropicReviewer():
         {task['description']}
 
         ## Instructions
-        {task['instructions']}
+        {task['instructions']}"""
 
         ## Examples"""
 
@@ -137,7 +137,7 @@ class AnthropicReviewer():
         messages=[
             {
                 "role": "user",
-                "content": message + examples + whitepaper,
+                "content": message + whitepaper,
             }
         ])
 
