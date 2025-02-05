@@ -131,7 +131,7 @@ class AnthropicReviewer():
 
         tasks = self.client.messages.create(
         model=model,
-        system= system_instructions + markdown_format,
+        system=self.system_instructions + self.markdown_format,
         max_tokens=3000,
         temperature=0,
         messages=[
@@ -156,7 +156,7 @@ class Demo():
         self.moodel_md = read_file('data/whitepaper/riskcalc-3.1-whitepaper.md')
         self.guidance_md = read_file('data/whitepaper/AB_2013-07_Model_Risk_Management_Guidance.md')
         self.run_generate = False
-        self.run_analyze = False
+        self.run_analysis = False
         self.run_review = False
         self.objective = 0
         self.report = ''
@@ -179,7 +179,7 @@ class Demo():
         self.run_review = False
         self.report = ''
         self.review = ''
-        self.taks = None
+        self.tasks = None
         
     def task_table(self):
         if self.tasks is None:
@@ -223,7 +223,7 @@ class Demo():
                 st.markdown(f"**Objective**: {Demo.objectives[self.objective]}")
 
             with st.container(border=True):
-                analyze_button = st.button(label='Generate', on_click=self.generate, disabled=self.report != '')
+                analyze_button = st.button(label='Generate', on_click=self.generate)
                 if self.run_generate:
                     with st.spinner('Generating...'):
                         self.tasks = self.reviewer.generate_compliance_tasks(Demo.objectives[self.objective], self.guidance_md)
@@ -238,18 +238,17 @@ class Demo():
                 st.markdown(f"**Objective**: {Demo.objectives[self.objective]}")
 
             with st.container(border=True):
-                analyze_button = st.button(label='Analyze', on_click=self.analyze, disabled=self.report != '')
-                if self.run_generate:
-                    with st.spinner('Analyze...'):
-                        self.report = self.reviewer.generate_compliance_tasks(Demo.objectives[self.objective], self.guidance_md)
+                analyze_button = st.button(label='Analyze', on_click=self.analyze, disabled=self.tasks is None)
+                if self.run_analysis:
+                    #with st.spinner('Analyze...'):
                     reports = []
                     for task in self.tasks['tasks']:
-                        report = self.reviewer.analysis_task(Demo.objectives[self.objective], task, self.moodel_md, model=sonnet3)
-                        st.markdown(report)
-                        display(Markdown(report))
+                        with st.status(task['description']):
+                            report = self.reviewer.analysis_task(Demo.objectives[self.objective], task, self.moodel_md, model=self.reviewer.sonnet3)
                         reports.append(report)                        
+                    st.markdown("---\n".join(reports))
                     #self.report = st.write_stream(self.reviewer.analyze_stream(self.moodel_md, Demo.objectives[self.objective], self.guidance))
-                    self.run_analyze = False
+                    self.run_analysis = False
                 else:
                     st.markdown(self.report)
 
