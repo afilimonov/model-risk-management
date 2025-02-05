@@ -325,12 +325,14 @@ class Demo():
                         with st.status(task['description']):
                             report = self.reviewer.analysis_task(Demo.objectives[self.objective], task, self.model_md, model=self.reviewer.sonnet3)
                             st.markdown(report)
-                        self.reports.append(report)                        
+                        self.reports.append({'task':task, 'report':report})                        
                     #st.markdown("---".join(self.reports))
                     #self.report = st.write_stream(self.reviewer.analyze_stream(self.moodel_md, Demo.objectives[self.objective], self.guidance))
                     self.run_analysis = False
                 else:
-                    st.markdown("---".join(self.reports))
+                    for r in self.reports:
+                        with st.status(r['task']['description']):
+                            st.markdown(r['report'])
 
         with summary: 
             with st.container(border=True):
@@ -340,7 +342,7 @@ class Demo():
                 analyze_button = st.button(label='Summarize', on_click=self.summarize, disabled= not self.reports)
                 if self.run_summary:
                     with st.status('Combine reorts into a single comprehensive report'):
-                        self.summary = self.reviewer.summary(self.reports, self.model_md, model=self.reviewer.sonnet3)
+                        self.summary = self.reviewer.summary([r['report'] for r in self.reports], self.model_md, model=self.reviewer.sonnet3)
                     st.markdown(self.summary)
                     #self.report = st.write_stream(self.reviewer.analyze_stream(self.moodel_md, Demo.objectives[self.objective], self.guidance))
                     self.run_summary = False
