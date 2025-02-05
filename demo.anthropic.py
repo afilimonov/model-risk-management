@@ -143,6 +143,42 @@ class AnthropicReviewer():
 
         return tasks.content[0].text
     
+    def summary(self, reports, document, model=haiku3):
+        message = f"""
+        You are a list of reports on multiple analyis tasks. You are also given a model whitepaper what was analyzed for the reference.
+        Combine provided reorts into a single comprehensive report.
+        Retain all references, quotaions, and examples. 
+        The final report should have the following structure: 
+        - Analysis objective
+        - Findings
+        - Conclusion
+        - Recommendatons
+
+        ## Reports
+        """
+
+        reports = "".join("---\n" + r for r in reports)
+
+
+        whitepaper = f"""
+        ## Whitepaer
+        {document}
+        """
+
+        tasks = self.client.messages.create(
+        model=model,
+        system= self.system_instructions + self.markdown_format,
+        max_tokens=3000,
+        temperature=0,
+        messages=[
+            {
+                "role": "user",
+                "content": message + reports + whitepaper,
+            }
+        ])
+
+        return tasks.content[0].text    
+    
 class Demo():
 
     objectives =['Assess model whitepaper for compliance with AB guidance requirements for model documentation',
@@ -152,34 +188,37 @@ class Demo():
         # self.reviewer = OpenAIReviewer(model='gpt-4-turbo-preview')
         self.reviewer = AnthropicReviewer()
         self.guidance = read_file('data/whitepaper/AB_2013-07_Model_Risk_Management_Guidance.txt')
-        self.moodel = read_file('data/whitepaper/riskcalc-3.1-whitepaper.txt')
-        self.moodel_md = read_file('data/whitepaper/riskcalc-3.1-whitepaper.md')
+        self.model = read_file('data/whitepaper/riskcalc-3.1-whitepaper.txt')
+        self.model_md = read_file('data/whitepaper/riskcalc-3.1-whitepaper.md')
         self.guidance_md = read_file('data/whitepaper/AB_2013-07_Model_Risk_Management_Guidance.md')
+        self.reset()
+
+    def reset(self):
         self.run_generate = False
         self.run_analysis = False
         self.run_review = False
+        self.run_summary = False
         self.objective = 0
-        self.report = ''
+        self.summary = ''
         self.review = ''
         self.tasks = None
-
-
+        self.reports = []
+        
     def generate(self): 
         self.run_generate = True
         
     def analyze(self):
         self.run_analysis = True
+        
+    def summarize(self):
+        self.run_summary = True
     
     def do_review(self):
         self.run_review = True
 
     def set_objective(self):
         self.objective = Demo.objectives.index(st.session_state.objective)
-        self.run_analysis = False
-        self.run_review = False
-        self.report = ''
-        self.review = ''
-        self.tasks = None
+        self.reset()
         
     def task_table(self):
         if self.tasks is None:
@@ -209,10 +248,10 @@ class Demo():
             on_change=self.set_objective)
         # analyze_button = st.button(label='Analize', on_click=self.analyze)
         
-        whitepaper, guidance, tasks, analysis, review = st.tabs(["Whitepaper :file_folder:", "AB 2013-07 :file_folder:", "Tasks :bulb:","Analysis :bulb:",  "Review :ballot_box_with_check:"])
+        whitepaper, guidance, tasks, analysis, summary, review = st.tabs(["Whitepaper :file_folder:", "AB 2013-07 :file_folder:", "Tasks :clipboard:", "Analysis :bulb:", "Summary :memo:", "Review :ballot_box_with_check:"])
         with whitepaper:
             with st.container(border=True):
-                st.markdown(self.moodel_md)
+                st.markdown(self.model_md)
 
         with guidance:
             with st.container(border=True):
@@ -225,7 +264,7 @@ class Demo():
             with st.container(border=True):
                 analyze_button = st.button(label='Generate', on_click=self.generate)
                 if self.run_generate:
-                    with st.spinner('Generating...'):
+                    with st.status(f"Generating tasks for: {Demo.objectives[self.objective]}"):
                         self.tasks = self.reviewer.generate_compliance_tasks(Demo.objectives[self.objective], self.guidance_md)
                     st.markdown(self.task_table())
                     #self.report = st.write_stream(self.reviewer.analyze_stream(self.moodel_md, Demo.objectives[self.objective], self.guidance))
@@ -241,24 +280,39 @@ class Demo():
                 analyze_button = st.button(label='Analyze', on_click=self.analyze, disabled=self.tasks is None)
                 if self.run_analysis:
                     #with st.spinner('Analyze...'):
-                    reports = []
+                    self.reports = []
                     for task in self.tasks['tasks']:
                         with st.status(task['description']):
-                            report = self.reviewer.analysis_task(Demo.objectives[self.objective], task, self.moodel_md, model=self.reviewer.sonnet3)
-                        reports.append(report)                        
-                    st.markdown("---\n".join(reports))
+                            report = self.reviewer.analysis_task(Demo.objectives[self.objective], task, self.model_md, model=self.reviewer.sonnet3)
+                            st.markdown(report)
+                        self.reports.append(report)                        
+                    #st.markdown("---".join(self.reports))
                     #self.report = st.write_stream(self.reviewer.analyze_stream(self.moodel_md, Demo.objectives[self.objective], self.guidance))
                     self.run_analysis = False
                 else:
-                    st.markdown(self.report)
+                    st.markdown("---".join(self.reports))
 
-                    
+        with summary: 
+            with st.container(border=True):
+                st.markdown(f"**Objective**: {Demo.objectives[self.objective]}")
+
+            with st.container(border=True):
+                analyze_button = st.button(label='Summarize', on_click=self.summarize, disabled= not self.reports)
+                if self.run_summary:
+                    with st.status('Combine reorts into a single comprehensive report'):
+                        self.summary = self.reviewer.summary(self.reports, self.model_md, model=self.reviewer.sonnet3)
+                    st.markdown(self.summary)
+                    #self.report = st.write_stream(self.reviewer.analyze_stream(self.moodel_md, Demo.objectives[self.objective], self.guidance))
+                    self.run_summary = False
+                else:
+                    st.markdown(self.summary)
+            
         with review:
             with st.container(border=True):
                 st.markdown(f"**Objective**: {Demo.objectives[self.objective]}")
 
             with st.container(border=True):
-                analyze_button = st.button(label='Review', on_click=self.do_review, disabled=self.report == '')
+                analyze_button = st.button(label='Review', on_click=self.do_review, disabled=self.summary == '')
                 if self.run_review:
                     with st.spinner('Reviewing...'):
                         #st.markdown(self.reviewer.analyze(self.moodel, Demo.objectives[self.objective]))
