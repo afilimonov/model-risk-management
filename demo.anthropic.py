@@ -255,26 +255,19 @@ class Demo():
         self.run_review = True
 
     def set_objective(self):
-        self.objective = Demo.objectives.index(st.session_state.objective)
+        #self.objective = self.objectives.index(st.session_state.objective)
         self.reset()
         
     def task_table(self):
         if self.tasks is None:
             return        
-        headers = ['Task', 'Instructions', 'Examples']
-        #data = []
-        data = ''
         for task in self.tasks['tasks']:
-            #data.append([task['description'], task['instructions'], task['examples']])
             st.markdown('### Task')
             st.markdown(task['description'])
             st.markdown('### Instrucitons')
             st.markdown(task['instructions'])
             st.markdown('### Examples')
             st.markdown(task['examples'])
-        
-        #return data
-        #return tabulate(data, headers=headers, tablefmt='pipe')
 
 
     def run(self):
@@ -287,13 +280,15 @@ class Demo():
 
         st.header("Model Whitepaper Analysis")
 
-        st.session_state.objectives=st.selectbox(
-            '''Analysis Objective''',
-            Demo.objectives,
-            self.objective,
-            key='objective',
-            on_change=self.set_objective)
-        # analyze_button = st.button(label='Analize', on_click=self.analyze)
+        #st.session_state.objectives=st.selectbox(
+        #    '''Analysis Objective''',
+        #    self.objectives,
+        #    self.objective,
+        #    key='objective',
+        #    on_change=self.set_objective)
+        with st.container(border=True):
+                st.markdown(f"**Objective**: {self.objectives[self.objective]}")
+
         
         whitepaper, guidance, tasks, analysis, summary, review = st.tabs(["Whitepaper :file_folder:", "AB 2013-07 :file_folder:", "Tasks :clipboard:", "Analysis :bulb:", "Summary :memo:", "Peer Review :ballot_box_with_check:"])
         with whitepaper:
@@ -305,13 +300,13 @@ class Demo():
                 st.markdown(self.guidance_md)
 
         with tasks:
-            with st.container(border=True):
-                st.markdown(f"**Objective**: {Demo.objectives[self.objective]}")
+            #with st.container(border=True):
+            #    st.markdown(f"**Objective**: {self.objectives[self.objective]}")
 
             with st.container(border=True):
                 analyze_button = st.button(label='Generate', on_click=self.generate)
                 if self.run_generate:
-                    with st.status(f"Generating tasks for: {Demo.objectives[self.objective]}"):
+                    with st.status(f"Generating tasks for: {self.objectives[self.objective]}"):
                         self.tasks = self.reviewer.generate_compliance_tasks(Demo.objectives[self.objective], self.guidance_md)
                     #st.markdown(self.tasks)
                     self.task_table()
@@ -322,8 +317,8 @@ class Demo():
                     self.task_table()
                     
         with analysis:
-            with st.container(border=True):
-                st.markdown(f"**Objective**: {Demo.objectives[self.objective]}")
+            #with st.container(border=True):
+            #    st.markdown(f"**Objective**: {self.objectives[self.objective]}")
 
             with st.container(border=True):
                 analyze_button = st.button(label='Analyze', on_click=self.analyze, disabled=self.tasks is None)
@@ -332,7 +327,7 @@ class Demo():
                     self.reports = []
                     for task in self.tasks['tasks']:
                         with st.status(task['description']):
-                            report = self.reviewer.analysis_task(Demo.objectives[self.objective], task, self.model_md, model=self.reviewer.sonnet3)
+                            report = self.reviewer.analysis_task(self.objectives[self.objective], task, self.model_md, model=self.reviewer.sonnet3)
                             st.markdown(report)
                         self.reports.append({'task':task, 'report':report})                        
                     #st.markdown("---".join(self.reports))
@@ -344,8 +339,8 @@ class Demo():
                             st.markdown(r['report'])
 
         with summary: 
-            with st.container(border=True):
-                st.markdown(f"**Objective**: {Demo.objectives[self.objective]}")
+            #with st.container(border=True):
+            #    st.markdown(f"**Objective**: {self.objectives[self.objective]}")
 
             with st.container(border=True):
                 analyze_button = st.button(label='Summarize', on_click=self.summarize, disabled= not self.reports)
@@ -359,8 +354,8 @@ class Demo():
                     st.markdown(self.summary)
             
         with review:
-            with st.container(border=True):
-                st.markdown(f"**Objective**: {Demo.objectives[self.objective]}")
+            #with st.container(border=True):
+            #    st.markdown(f"**Objective**: {self.objectives[self.objective]}")
 
             with st.container(border=True):
                 analyze_button = st.button(label='Review', on_click=self.do_review, disabled=self.summary == '')
@@ -368,7 +363,7 @@ class Demo():
                     with st.status('Perform peer review'):
                         #st.markdown(self.reviewer.analyze(self.moodel, Demo.objectives[self.objective]))
                         #self.review = st.write_stream(self.reviewer.review_stream(self.guidance_md, Demo.objectives[self.objective], self.report))
-                        self.review = self.reviewer.review(Demo.objectives[self.objective], self.summary, self.guidance_md, model=self.reviewer.sonnet3)
+                        self.review = self.reviewer.review(self.objectives[self.objective], self.summary, self.guidance_md, model=self.reviewer.sonnet3)
                     st.markdown(self.review)
                     self.run_review = False
                 else:
