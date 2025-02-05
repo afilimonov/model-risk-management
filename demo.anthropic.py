@@ -288,7 +288,7 @@ class Demo():
             on_change=self.set_objective)
         # analyze_button = st.button(label='Analize', on_click=self.analyze)
         
-        whitepaper, guidance, tasks, analysis, summary, review = st.tabs(["Whitepaper :file_folder:", "AB 2013-07 :file_folder:", "Tasks :clipboard:", "Analysis :bulb:", "Summary :memo:", "Review :ballot_box_with_check:"])
+        whitepaper, guidance, tasks, analysis, summary, review = st.tabs(["Whitepaper :file_folder:", "AB 2013-07 :file_folder:", "Tasks :clipboard:", "Analysis :bulb:", "Summary :memo:", "Peer Review :ballot_box_with_check:"])
         with whitepaper:
             with st.container(border=True):
                 st.markdown(self.model_md)
@@ -357,7 +357,7 @@ class Demo():
                     with st.status('Perform peer review'):
                         #st.markdown(self.reviewer.analyze(self.moodel, Demo.objectives[self.objective]))
                         #self.review = st.write_stream(self.reviewer.review_stream(self.guidance_md, Demo.objectives[self.objective], self.report))
-                        self.review = review(Demo.objectives[self.objective], self.summary, self.guidance_md, model=self.reviewer.sonnet3)
+                        self.review = self.reviewer.review(Demo.objectives[self.objective], self.summary, self.guidance_md, model=self.reviewer.sonnet3)
                     st.markdown(self.review)
                     self.run_review = False
                 else:
