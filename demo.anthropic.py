@@ -178,6 +178,46 @@ class AnthropicReviewer():
         ])
 
         return tasks.content[0].text    
+
+    def review(self, objective, report, guidance, model=haiku3):
+        message = f"""
+        Perform quality control review of the provided analysis report report.
+        Follow these instruction:
+        - Focus on analysis objective.
+        - Assess the report for accuracy, consistency and completeness.
+        - Use provided AB Guidance as a reference.
+        - Provide actionable contextual recommendations to improve and enhance the report.
+        - Keep the scope of recommendatons to the orinal report analysis objective.
+
+        The review should have the following structure:
+        - Review objective
+        - Findings
+        - Conclusion
+        - Recommendations
+
+        ## Analysis Objective
+        {objective}
+
+        ## Analysis Report
+        {report}
+
+        ## AB Guidance
+        {guidance}
+        """
+
+        tasks = self.client.messages.create(
+        model=model,
+        system= self.system_instructions + self.markdown_format,
+        max_tokens=3000,
+        temperature=0,
+        messages=[
+            {
+                "role": "user",
+                "content": message
+            }
+        ])
+
+        return tasks.content[0].text
     
 class Demo():
 
@@ -314,10 +354,12 @@ class Demo():
             with st.container(border=True):
                 analyze_button = st.button(label='Review', on_click=self.do_review, disabled=self.summary == '')
                 if self.run_review:
-                    with st.spinner('Reviewing...'):
+                    with st.status('Perform peer review'):
                         #st.markdown(self.reviewer.analyze(self.moodel, Demo.objectives[self.objective]))
-                        self.report = st.write_stream(self.reviewer.review_stream(self.guidance_md, Demo.objectives[self.objective], self.report))
-                        self.run_review = False
+                        #self.review = st.write_stream(self.reviewer.review_stream(self.guidance_md, Demo.objectives[self.objective], self.report))
+                        self.review = review(Demo.objectives[self.objective], self.summary, self.guidance_md, model=self.reviewer.sonnet3)
+                    st.markdown(self.review)
+                    self.run_review = False
                 else:
                     st.markdown(self.review)
 
