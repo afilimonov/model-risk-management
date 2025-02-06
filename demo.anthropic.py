@@ -22,6 +22,7 @@ class AnthropicReviewer():
     
     sonnet3 = 'anthropic.claude-3-sonnet-20240229-v1:0'
     haiku3 = 'anthropic.claude-3-haiku-20240307-v1:0'
+    sonnet35_v1 = 'anthropic.claude-3-5-sonnet-20240620-v1:0'
 
     system_instructions = """
     # I'm Model Risk Management Copilot:
@@ -307,7 +308,7 @@ class Demo():
                 analyze_button = st.button(label='Generate', on_click=self.generate)
                 if self.run_generate:
                     with st.status(f"Generating tasks for: {self.objectives[self.objective]}"):
-                        self.tasks = self.reviewer.generate_compliance_tasks(Demo.objectives[self.objective], self.guidance_md)
+                        self.tasks = self.reviewer.generate_compliance_tasks(Demo.objectives[self.objective], self.guidance_md, model=self.reviewer.sonnet3)
                     #st.markdown(self.tasks)
                     self.task_table()
                     #self.report = st.write_stream(self.reviewer.analyze_stream(self.moodel_md, Demo.objectives[self.objective], self.guidance))
