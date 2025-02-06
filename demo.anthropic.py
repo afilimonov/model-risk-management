@@ -308,7 +308,7 @@ class Demo():
                 analyze_button = st.button(label='Generate', on_click=self.generate)
                 if self.run_generate:
                     with st.status(f"Generating tasks for: {self.objectives[self.objective]}"):
-                        self.tasks = self.reviewer.generate_compliance_tasks(Demo.objectives[self.objective], self.guidance_md, model=self.reviewer.sonnet3)
+                        self.tasks = self.reviewer.generate_compliance_tasks(Demo.objectives[self.objective], self.guidance_md) #, model=self.reviewer.sonnet3)
                     #st.markdown(self.tasks)
                     self.task_table()
                     #self.report = st.write_stream(self.reviewer.analyze_stream(self.moodel_md, Demo.objectives[self.objective], self.guidance))
@@ -328,7 +328,7 @@ class Demo():
                     self.reports = []
                     for task in self.tasks['tasks']:
                         with st.status(task['description']):
-                            report = self.reviewer.analysis_task(self.objectives[self.objective], task, self.model_md, model=self.reviewer.sonnet3)
+                            report = self.reviewer.analysis_task(self.objectives[self.objective], task, self.model_md, model=self.reviewer.sonnet35_v1)
                             st.markdown(report)
                         self.reports.append({'task':task, 'report':report})                        
                     #st.markdown("---".join(self.reports))
@@ -347,7 +347,7 @@ class Demo():
                 analyze_button = st.button(label='Summarize', on_click=self.summarize, disabled= not self.reports)
                 if self.run_summary:
                     with st.status('Combine reorts into a single comprehensive report'):
-                        self.summary = self.reviewer.summary([r['report'] for r in self.reports], self.model_md, model=self.reviewer.sonnet3)
+                        self.summary = self.reviewer.summary([r['report'] for r in self.reports], self.model_md, model=self.reviewer.sonnet35_v1)
                     st.markdown(self.summary)
                     #self.report = st.write_stream(self.reviewer.analyze_stream(self.moodel_md, Demo.objectives[self.objective], self.guidance))
                     self.run_summary = False
@@ -364,7 +364,7 @@ class Demo():
                     with st.status('Perform peer review'):
                         #st.markdown(self.reviewer.analyze(self.moodel, Demo.objectives[self.objective]))
                         #self.review = st.write_stream(self.reviewer.review_stream(self.guidance_md, Demo.objectives[self.objective], self.report))
-                        self.review = self.reviewer.review(self.objectives[self.objective], self.summary, self.guidance_md, model=self.reviewer.sonnet3)
+                        self.review = self.reviewer.review(self.objectives[self.objective], self.summary, self.guidance_md, model=self.reviewer.sonnet35_v1)
                     st.markdown(self.review)
                     self.run_review = False
                 else:
