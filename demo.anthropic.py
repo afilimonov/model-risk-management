@@ -269,6 +269,7 @@ class Demo():
             st.markdown(task['instructions'])
             st.markdown('### Examples')
             st.markdown(task['examples'])
+            st.markdown('---')
 
 
     def run(self):
