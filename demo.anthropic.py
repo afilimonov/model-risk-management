@@ -65,8 +65,8 @@ class AnthropicReviewer():
         
     def generate_compliance_tasks(self, question, document, model=haiku3):
         message = f"""
-        Generate a comprehensive list of tasks to be used to analyze model whitepare compiance with provided AB guidance. Each task includes short description, detailed instructions and examples of evdience to look for to answer this compliance question: {question}.
-        Be as detailed as possible. Number of identified tasks should ensure comprehensive analysis.
+        Generate a comprehensive list of tasks to be used to analyze model whitepare compliance with provided AB guidance. Each task includes short description, detailed instructions and examples of evdience to look for to answer this compliance question: {question}.
+        Be as detailed as possible. Number of identified tasks should ensure comprehensive analysis and cover nauanced compliance topics. Generate at least 5 tasks more if neeeded.
         Your response should be a valid json object and nothing else. It should pass json validation when creating loading response into json object using joson.loads python funciton.
         """
         example = """
@@ -89,8 +89,10 @@ class AnthropicReviewer():
         tasks = self.client.messages.create(
             model=model,
             system= guidance,
-            max_tokens=3000,
-            temperature=0,
+            max_tokens=4000,
+            temperature=0.0,
+            top_p = 0.9,
+            top_k = 250,
             messages=[
                 {
                     "role": "user",
@@ -105,34 +107,36 @@ class AnthropicReviewer():
         You are given analyis objective and specific analysis task that includes instructions and examples. Preform comprhensive analyssi of proved model whitepater following analysis using task instructions.
         Analysis report should have the follwing structure:
 
-        - Analysis Objective
+        ## Analysis Objective
         - Analysis Task
         - Instructions
         - Report
         - Conclusion
         - Recommendations
 
-        ## Objective
+        Objective:
         {quesiton}
 
-        ## Task
+        Task:
         {task['description']}
 
-        ## Instructions
+        Instructions:
         {task['instructions']}
 
-        ## Examples
+        Examples:
         {task['examples']}
         
-        ## Whitepaer
+        Whitepaer:
         {document}
         """
 
         tasks = self.client.messages.create(
         model=model,
         system=self.system_instructions + self.markdown_format,
-        max_tokens=3000,
-        temperature=0,
+        max_tokens=4000,
+        temperature=0.0,
+        top_p = 0.9,
+        top_k = 250,
         messages=[
             {
                 "role": "user",
@@ -148,27 +152,29 @@ class AnthropicReviewer():
         Combine provided reorts into a single comprehensive report.
         Retain all references, quotaions, and examples. 
         The final report should have the following structure: 
-        - Analysis objective
-        - Findings
-        - Conclusion
-        - Recommendatons
+        ## Analysis objective
+        ## Findings
+        ## Conclusion
+        ## Recommendatons
 
-        ## Reports
+        Reports:
         """
 
         reports = "".join("---\n" + r for r in reports)
 
 
         whitepaper = f"""
-        ## Whitepaer
+        Whitepaer:
         {document}
         """
 
         tasks = self.client.messages.create(
         model=model,
         system= self.system_instructions + self.markdown_format,
-        max_tokens=3000,
-        temperature=0,
+        max_tokens=4000,
+        temperature=0.0,
+        top_p = 0.9,
+        top_k = 250,
         messages=[
             {
                 "role": "user",
@@ -189,15 +195,15 @@ class AnthropicReviewer():
         - Keep the scope of recommendatons to the orinal report analysis objective.
 
         The review should have the following structure:
-        - Review objective
-        - Findings
-        - Conclusion
-        - Recommendations
+        ## Review objective
+        ## Findings
+        ## Conclusion
+        ## Recommendations
 
-        ## Analysis Objective
+        Analysis Objective:
         {objective}
 
-        ## Analysis Report
+        :Analysis Report
         {report}
 
         ## AB Guidance
@@ -207,8 +213,10 @@ class AnthropicReviewer():
         tasks = self.client.messages.create(
         model=model,
         system= self.system_instructions + self.markdown_format,
-        max_tokens=3000,
-        temperature=0,
+        max_tokens=4000,
+        temperature=0.0,
+        top_p = 0.9,
+        top_k = 250,
         messages=[
             {
                 "role": "user",
@@ -260,6 +268,9 @@ class Demo():
         self.reset()
         
     def task_table(self):
+        #st.markdown(self.tasks)
+        #return
+    
         if self.tasks is None:
             return        
         for task in self.tasks['tasks']:
