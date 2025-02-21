@@ -13,3 +13,4 @@ tabulate
 instructor
 anthropic[bedrock]
 json-repair
+docling
